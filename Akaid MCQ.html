@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দাখিল দশম - আকাইদ ও ফিকহ প্রশ্নপত্র</title>
+    
+    <!-- সহজ ও সোজা ফন্ট (Hind Siliguri ও Noto Naskh Arabic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222222;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .exam-sheet {
+            background: #ffffff;
+            width: 100%;
+            max-width: 950px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        /* হেডার */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 4px;
+        }
+
+        .header h2 {
+            font-size: 19px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .header-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14.5px;
+            font-weight: 600;
+            border-top: 1px dashed #aaa;
+            padding-top: 8px;
+        }
+
+        .instruction {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* ২-কলাম প্রশ্ন লেআউট */
+        .questions-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 30px;
+            row-gap: 18px;
+        }
+
+        .question-card {
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .question-title {
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: #111;
+        }
+
+        .arabic {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 16px;
+            direction: rtl;
+            display: inline-block;
+        }
+
+        /* অপশনসমূহ */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 10px;
+            font-size: 14px;
+        }
+
+        .option {
+            padding: 4px 6px;
+            border-radius: 4px;
+            color: #333;
+        }
+
+        /* প্রিন্ট স্টাইল */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .exam-sheet {
+                box-shadow: none;
+                border: none;
+                padding: 10px;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .questions-container {
+                grid-template-columns: 1fr;
+            }
+            .exam-sheet {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="exam-sheet">
+    
+    <!-- হেডার -->
+    <div class="header">
+        <h1>শ্রেণি : দাখিল দশম</h1>
+        <h2>বিষয় : আকাইদ ও ফিকহ</h2>
+        <div class="header-meta">
+            <span>বিষয় কোড : ১৩৩</span>
+            <span>ক. বিভাগ : বহুনির্বাচনি</span>
+            <span>পূর্ণমান : ৪০</span>
+        </div>
+    </div>
+
+    <div class="instruction">
+        [ দ্রষ্টব্য : প্রতিটি প্রশ্নের সঠিক উত্তরটি খাতায় লেখ। মান-১ × ৪০ = ৪০ ]
+    </div>
+
+    <!-- প্রশ্নসমূহ -->
+    <div class="questions-container">
+
+        <!-- ১ -->
+        <div class="question-card">
+            <div class="question-title">১. <span class="arabic">العقيدة</span> শব্দের বহুবচন কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. المقاعد</div>
+                <div class="option">খ. العقائد</div>
+                <div class="option">গ. العقاود</div>
+                <div class="option">ঘ. العقايد</div>
+            </div>
+        </div>
+
+        <!-- ২ -->
+        <div class="question-card">
+            <div class="question-title">২. <span class="arabic">تزكية</span> (তাযকিয়া) মানে—</div>
+            <div class="options-grid">
+                <div class="option">ক. অপবিত্র করা</div>
+                <div class="option">খ. ভুল করা</div>
+                <div class="option">গ. প্রবেশ করা</div>
+                <div class="option">ঘ. পবিত্র করা</div>
+            </div>
+        </div>
+
+        <!-- ৩ -->
+        <div class="question-card">
+            <div class="question-title">৩. <span class="arabic">الإيمان</span> অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. আন্তরিক বিশ্বাস</div>
+                <div class="option">খ. আন্তরিক মহব্বত</div>
+                <div class="option">গ. আন্তরিক প্রমাণ</div>
+                <div class="option">ঘ. অন্তরের নির্যাস</div>
+            </div>
+        </div>
+
+        <!-- ৪ -->
+        <div class="question-card">
+            <div class="question-title">৪. হাদিসের ভাষ্যমতে ইসলামের ভিত্তি—</div>
+            <div class="options-grid">
+                <div class="option">ক. ৩টি</div>
+                <div class="option">খ. ৪টি</div>
+                <div class="option">গ. ৫টি</div>
+                <div class="option">ঘ. ৬টি</div>
+            </div>
+        </div>
+
+        <!-- ৫ -->
+        <div class="question-card">
+            <div class="question-title">৫. একজন নিরেট মুনাফিকের মধ্যে হাদিসের আলোকে কতটি বিষয় পাওয়া যায়?</div>
+            <div class="options-grid">
+                <div class="option">ক. ২টি</div>
+                <div class="option">খ. ৪টি</div>
+                <div class="option">গ. ৫টি</div>
+                <div class="option">ঘ. ৬টি</div>
+            </div>
+        </div>
+
+        <!-- ৬ -->
+        <div class="question-card">
+            <div class="question-title">৬. কোনো পুণ্যের কাজ নিজের ওপর অপরিহার্য করাকে বলা হয়—</div>
+            <div class="options-grid">
+                <div class="option">ক. ইহসান</div>
+                <div class="option">খ. ঈমান</div>
+                <div class="option">গ. মান্নত</div>
+                <div class="option">ঘ. তাকওয়া</div>
+            </div>
+        </div>
+
+        <!-- ৭ -->
+        <div class="question-card">
+            <div class="question-title">৭. হযরত রাসুল (স) এর মিরাজ সংঘটিত হয়—</div>
+            <div class="options-grid">
+                <div class="option">ক. রূহ ও সশরীরে</div>
+                <div class="option">খ. শুধুমাত্র রূহের জগতে</div>
+                <div class="option">গ. ঘুমন্ত অবস্থায়</div>
+                <div class="option">ঘ. স্বপ্নের ভিতর</div>
+            </div>
+        </div>
+
+        <!-- ৮ -->
+        <div class="question-card">
+            <div class="question-title">৮. হযরত মুহাম্মদ (স) এর উপর দরুদ পাঠ করলে কতটি রহমত পাওয়া যায়?</div>
+            <div class="options-grid">
+                <div class="option">ক. ৭টি</div>
+                <div class="option">খ. ৮টি</div>
+                <div class="option">গ. ১০টি</div>
+                <div class="option">ঘ. ৭০টি</div>
+            </div>
+        </div>
+
+        <!-- ৯ -->
+        <div class="question-card">
+            <div class="question-title">৯. তাওরাত নাযিল হয় কার উপর?</div>
+            <div class="options-grid">
+                <div class="option">ক. হযরত আদম (আ)</div>
+                <div class="option">খ. হযরত নূহ (আ)</div>
+                <div class="option">গ. হযরত মূসা (আ)</div>
+                <div class="option">ঘ. হযরত ঈসা (আ)</div>
+            </div>
+        </div>
+
+        <!-- ১০ -->
+        <div class="question-card">
+            <div class="question-title">১০. <span class="arabic">البعث</span> অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. পুনর্গমন</div>
+                <div class="option">খ. পুনঃপ্রচার</div>
+                <div class="option">গ. পুনর্গঠন</div>
+                <div class="option">ঘ. পুনরুত্থান</div>
+            </div>
+        </div>
+
+        <!-- ১১ -->
+        <div class="question-card">
+            <div class="question-title">১১. তাকদির কত প্রকার?</div>
+            <div class="options-grid">
+                <div class="option">ক. দুই</div>
+                <div class="option">খ. তিন</div>
+                <div class="option">গ. চার</div>
+                <div class="option">ঘ. পাঁচ</div>
+            </div>
+        </div>
+
+        <!-- ১২ -->
+        <div class="question-card">
+            <div class="question-title">১২. <span class="arabic">الوحي</span> শব্দটি—</div>
+            <div class="options-grid">
+                <div class="option">ক. আরবি শব্দ</div>
+                <div class="option">খ. ফারসি শব্দ</div>
+                <div class="option">গ. উর্দু শব্দ</div>
+                <div class="option">ঘ. হিব্রু শব্দ</div>
+            </div>
+        </div>
+
+        <!-- ১৩ -->
+        <div class="question-card">
+            <div class="question-title">১৩. ইমামে আজম রহমতুল্লাহি আলাইহির নাম কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. ইমরান</div>
+                <div class="option">খ. গোফরান</div>
+                <div class="option">গ. নো'মান</div>
+                <div class="option">ঘ. ইরফান</div>
+            </div>
+        </div>
+
+        <!-- ১৪ -->
+        <div class="question-card">
+            <div class="question-title">১৪. নিচের কোনটি অযুর ফরজ?</div>
+            <div class="options-grid">
+                <div class="option">ক. বিসমিল্লাহ বলে শুরু করা</div>
+                <div class="option">খ. মুখমণ্ডল ধৌত করা</div>
+                <div class="option">গ. গড়গড়াসহ কুলি করা</div>
+                <div class="option">ঘ. নাকে পানি দেওয়া</div>
+            </div>
+        </div>
+
+        <!-- ১৫ -->
+        <div class="question-card">
+            <div class="question-title">১৫. কুদুরি গ্রন্থের লেখকের নাম কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. আবুল হুসাইন আহমদ</div>
+                <div class="option">খ. নোমান</div>
+                <div class="option">গ. মোহাম্মদ</div>
+                <div class="option">ঘ. মালেক</div>
+            </div>
+        </div>
+
+        <!-- ১৬ -->
+        <div class="question-card">
+            <div class="question-title">১৬. <span class="arabic">نواقض الوضوء</span> কয়টি?</div>
+            <div class="options-grid">
+                <div class="option">ক. ৭ টি</div>
+                <div class="option">খ. ৮ টি</div>
+                <div class="option">গ. ৯ টি</div>
+                <div class="option">ঘ. ১০ টি</div>
+            </div>
+        </div>
+
+        <!-- ১৭ -->
+        <div class="question-card">
+            <div class="question-title">১৭. জামাতের সাথে নামায আদায়ের হুকুম কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. فرض</div>
+                <div class="option">খ. واجب</div>
+                <div class="option">গ. سنة</div>
+                <div class="option">ঘ. مستحب</div>
+            </div>
+        </div>
+
+        <!-- ১৮ -->
+        <div class="question-card">
+            <div class="question-title">১৮. ইমামতির জন্য সর্বোত্তম ব্যক্তি যিনি—</div>
+            <div class="question-title" style="font-weight:normal; font-size:13.5px; margin-bottom:5px;">i. সুন্নাহর ব্যাপারে অধিক জ্ঞাত ii. বিশুদ্ধ কুরআন তিলাওয়াতকারী iii. অধিক দানশীল</div>
+            <div class="options-grid">
+                <div class="option">ক. i</div>
+                <div class="option">খ. ii</div>
+                <div class="option">গ. i ও ii</div>
+                <div class="option">ঘ. ii ও iii</div>
+            </div>
+        </div>
+
+        <!-- ১৯ -->
+        <div class="question-card">
+            <div class="question-title">১৯. নামাযের ভিতরে ফরজ (রুকন) কয়টি?</div>
+            <div class="options-grid">
+                <div class="option">ক. ৫টি</div>
+                <div class="option">খ. ৬টি</div>
+                <div class="option">গ. ৭টি</div>
+                <div class="option">ঘ. ৮টি</div>
+            </div>
+        </div>
+
+        <!-- ২০ -->
+        <div class="question-card">
+            <div class="question-title">২০. ঈদের নামাযের খুতবা পাঠ করতে হয়—</div>
+            <div class="options-grid">
+                <div class="option">ক. নামাযের পূর্বে</div>
+                <div class="option">খ. নামাযের পর</div>
+                <div class="option">গ. নামাযের সাথে</div>
+                <div class="option">ঘ. খুতবার প্রয়োজন নেই</div>
+            </div>
+        </div>
+
+        <!-- ২১ -->
+        <div class="question-card">
+            <div class="question-title">২১. নিচের কোনটি হজের ফরজ?</div>
+            <div class="options-grid">
+                <div class="option">ক. আরাফায় অবস্থান</div>
+                <div class="option">খ. মুযদালিফায় অবস্থান</div>
+                <div class="option">গ. তাওয়াফে কুদুম</div>
+                <div class="option">ঘ. পাথর নিক্ষেপ</div>
+            </div>
+        </div>
+
+        <!-- ২২ -->
+        <div class="question-card">
+            <div class="question-title">২২. যিনি কুরবানির ঈদের দিন নিসাব পরিমাণ মালের মালিক থাকবেন তার জন্য কুরবানি করা—</div>
+            <div class="options-grid">
+                <div class="option">ক. فرض</div>
+                <div class="option">খ. واجب</div>
+                <div class="option">গ. سنة</div>
+                <div class="option">ঘ. مستحب</div>
+            </div>
+        </div>
+
+        <!-- ২৩ -->
+        <div class="question-card">
+            <div class="question-title">২৩. কুরবানির সময় কতদিন পর্যন্ত স্থায়ী থাকে?</div>
+            <div class="options-grid">
+                <div class="option">ক. একদিন</div>
+                <div class="option">খ. দুইদিন</div>
+                <div class="option">গ. তিনদিন</div>
+                <div class="option">ঘ. চারদিন</div>
+            </div>
+        </div>
+
+        <!-- ২৪ -->
+        <div class="question-card">
+            <div class="question-title">২৪. <span class="arabic">روضة</span> শব্দের অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. ঘর</div>
+                <div class="option">খ. মসজিদ</div>
+                <div class="option">গ. বাগান</div>
+                <div class="option">ঘ. খানকা</div>
+            </div>
+        </div>
+
+        <!-- ২৫ -->
+        <div class="question-card">
+            <div class="question-title">২৫. <span class="arabic">الأخلاق</span> অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. নীতিবিজ্ঞান</div>
+                <div class="option">খ. নৈতিক বিশ্বাস</div>
+                <div class="option">গ. নীতিশিক্ষা</div>
+                <div class="option">ঘ. স্বভাব-চরিত্র</div>
+            </div>
+        </div>
+
+        <!-- ২৬ -->
+        <div class="question-card">
+            <div class="question-title">২৬. <span class="arabic">إيفاء الوعد</span> অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. প্রতিশ্রুতি পূরণ করা</div>
+                <div class="option">খ. উত্তম কাজ করা</div>
+                <div class="option">গ. নীতিবান হওয়া</div>
+                <div class="option">ঘ. সভ্য হওয়া</div>
+            </div>
+        </div>
+
+        <!-- ২৭ -->
+        <div class="question-card">
+            <div class="question-title">২৭. <span class="arabic">الرشوة</span> মানে—</div>
+            <div class="options-grid">
+                <div class="option">ক. সুদ</div>
+                <div class="option">খ. ঘুষ</div>
+                <div class="option">গ. অনাচার</div>
+                <div class="option">ঘ. অশ্লীলতা</div>
+            </div>
+        </div>
+
+        <!-- ২৮ -->
+        <div class="question-card">
+            <div class="question-title">২৮. <span class="arabic">"وإنك لعلى خلق عظيم"</span> - এটা কার বাণী?</div>
+            <div class="options-grid">
+                <div class="option">ক. রাসুল (স)-এর</div>
+                <div class="option">খ. আল্লাহ তাআলার</div>
+                <div class="option">গ. অলিদের</div>
+                <div class="option">ঘ. সাহাবিদের</div>
+            </div>
+        </div>
+
+        <!-- ২৯ -->
+        <div class="question-card">
+            <div class="question-title">২৯. <span class="arabic">خمر</span> অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. মাদক</div>
+                <div class="option">খ. জুয়া</div>
+                <div class="option">গ. সুদ</div>
+                <div class="option">ঘ. ঘুষ</div>
+            </div>
+        </div>
+
+        <!-- ৩০ -->
+        <div class="question-card">
+            <div class="question-title">৩০. <span class="arabic">كان خلقه القران</span> দ্বারা কার চরিত্র বুঝানো হয়েছে?</div>
+            <div class="options-grid">
+                <div class="option">ক. মুহাম্মদ (স) এর চরিত্র</div>
+                <div class="option">খ. মূসা (আ) এর চরিত্র</div>
+                <div class="option">গ. ইবরাহিম (আ) এর চরিত্র</div>
+                <div class="option">ঘ. ঈসা (আ) এর চরিত্র</div>
+            </div>
+        </div>
+
+        <!-- ৩১ -->
+        <div class="question-card">
+            <div class="question-title">৩১. কবিরা গুনাহের পরিণতি—</div>
+            <div class="options-grid">
+                <div class="option">ক. জাহান্নাম</div>
+                <div class="option">খ. জান্নাত</div>
+                <div class="option">গ. হানি</div>
+                <div class="option">ঘ. অপূর্ণতা</div>
+            </div>
+        </div>
+
+        <!-- ৩২ -->
+        <div class="question-card">
+            <div class="question-title">৩২. তাকদির পরিবর্তন হয় কিসের মাধ্যমে?</div>
+            <div class="options-grid">
+                <div class="option">ক. ঈমানের</div>
+                <div class="option">খ. ইসলামের</div>
+                <div class="option">গ. দোয়ার</div>
+                <div class="option">ঘ. নামাজের</div>
+            </div>
+        </div>
+
+        <!-- ৩৩ -->
+        <div class="question-card">
+            <div class="question-title">৩৩. উসুলুল ফিকহের প্রতিষ্ঠাতা কে?</div>
+            <div class="options-grid">
+                <div class="option">ক. ইমাম আজম (র)</div>
+                <div class="option">খ. ইমাম আবু ইউসুফ (র)</div>
+                <div class="option">গ. ইমাম শাফেয়ি (র)</div>
+                <div class="option">ঘ. ইমাম বায়দাবি (র)</div>
+            </div>
+        </div>
+
+        <!-- ৩৪ -->
+        <div class="question-card">
+            <div class="question-title">৩৪. <span class="arabic">أصول</span> শব্দের একবচন—</div>
+            <div class="options-grid">
+                <div class="option">ক. وصل</div>
+                <div class="option">খ. اصل</div>
+                <div class="option">গ. أصبل</div>
+                <div class="option">ঘ. صول</div>
+            </div>
+        </div>
+
+        <!-- ৩৫ -->
+        <div class="question-card">
+            <div class="question-title">৩৫. এক সা' (صاع) সমান—</div>
+            <div class="options-grid">
+                <div class="option">ক. ২.৫০ কেজি</div>
+                <div class="option">খ. ৩.৫০ কেজি</div>
+                <div class="option">গ. ৪.৫০ কেজি</div>
+                <div class="option">ঘ. ৫.৫০ কেজি</div>
+            </div>
+        </div>
+
+        <!-- ৩৬ -->
+        <div class="question-card">
+            <div class="question-title">৩৬. <span class="arabic">حقيقة</span> কত প্রকার?</div>
+            <div class="options-grid">
+                <div class="option">ক. ২ প্রকার</div>
+                <div class="option">খ. ৩ প্রকার</div>
+    title">১৩. <span class="arabic">أصابت</span> শব্দের جنس কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. مهموز فاء</div>
+                <div class="option">খ. مضاعف ثلاثي</div>
+                <div class="option">গ. اجوف واوي</div>
+                <div class="option">ঘ. اجوف يائي</div>
+            </div>
+        </div>
+
+        <!-- ১৪ -->
+        <div class="question-card">
+            <div class="question-title">১৪. <span class="arabic">يتبعون</span> শব্দের صيغة কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. جمع مؤنث غائب</div>
+                <div class="option">খ. جمع مؤنث حاضر</div>
+                <div class="option">গ. جمع مذكر غائب</div>
+                <div class="option">ঘ. واحد مؤنث حاضر</div>
+            </div>
+        </div>
+
+        <!-- ১৫ -->
+        <div class="question-card">
+            <div class="question-title">১৫. নিচের কোনটি <span class="arabic">ضمير مرفوع منفصل</span>?</div>
+            <div class="options-grid">
+                <div class="option">ক. آتيتُموهُنَّ</div>
+                <div class="option">খ. هُوَ الله</div>
+                <div class="option">গ. بِهِ</div>
+                <div class="option">ঘ. يُحِبَّكُمْ</div>
+            </div>
+        </div>
+
+        <!-- ১৬ -->
+        <div class="question-card">
+            <div class="question-title">১৬. <span class="arabic">تِلْكَ</span> কোন ধরনের اسم?</div>
+            <div class="options-grid">
+                <div class="option">ক. اسم إشارة</div>
+                <div class="option">খ. اسم موصول</div>
+                <div class="option">গ. اسم جامد</div>
+                <div class="option">ঘ. اسم مصدر</div>
+            </div>
+        </div>
+
+        <!-- ১৭ -->
+        <div class="question-card">
+            <div class="question-title">১৭. লেনদেনের ক্ষেত্রে সাক্ষীর প্রয়োজন কত জন?</div>
+            <div class="options-grid">
+                <div class="option">ক. ২ জন</div>
+                <div class="option">খ. ৩ জন</div>
+                <div class="option">গ. ৪ জন</div>
+                <div class="option">ঘ. ৫ জন</div>
+            </div>
+        </div>
+
+        <!-- ১৮ -->
+        <div class="question-card">
+            <div class="question-title">১৮. <span class="arabic">قناطير</span> শব্দের অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. অনেক গরু-ছাগল</div>
+                <div class="option">খ. অনেক ফল-ফসল</div>
+                <div class="option">গ. প্রচুর ধনসম্পদ</div>
+                <div class="option">ঘ. প্রচুর খাদ্য সামগ্রী</div>
+            </div>
+        </div>
+
+        <!-- ১৯ -->
+        <div class="question-card">
+            <div class="question-title">১৯. বদর যুদ্ধে কতজন কাফির নিহত হয়?</div>
+            <div class="options-grid">
+                <div class="option">ক. ১৪ জন</div>
+                <div class="option">খ. ৭০ জন</div>
+                <div class="option">গ. ৩১৩ জন</div>
+                <div class="option">ঘ. ৩৭০ জন</div>
+            </div>
+        </div>
+
+        <!-- ২০ -->
+        <div class="question-card">
+            <div class="question-title">২০. <span class="arabic">والمستغفرين بالأسحار</span> দ্বারা কারা উদ্দেশ্য?</div>
+            <div class="options-grid">
+                <div class="option">ক. দানশীলগণ</div>
+                <div class="option">খ. বিনয়ীগণ</div>
+                <div class="option">গ. তাহাজ্জুদ আদায়কারীগণ</div>
+                <div class="option">ঘ. ধৈর্যশীলগণ</div>
+            </div>
+        </div>
+
+        <!-- ২১ -->
+        <div class="question-card">
+            <div class="question-title">২১. <span class="arabic">قد كان لكم آية في فئتين التقتا</span> আয়াতাংশে কোন যুদ্ধের প্রতি ইঙ্গিত করা হয়েছে?</div>
+            <div class="options-grid">
+                <div class="option">ক. বদর</div>
+                <div class="option">খ. ওহুদ</div>
+                <div class="option">গ. খন্দক</div>
+                <div class="option">ঘ. খায়বার</div>
+            </div>
+        </div>
+
+        <!-- ২২ -->
+        <div class="question-card">
+            <div class="question-title">২২. <span class="arabic">سموات</span> শব্দের একবচন কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. سماء</div>
+                <div class="option">খ. سمي</div>
+                <div class="option">গ. سمو</div>
+                <div class="option">ঘ. سماي</div>
+            </div>
+        </div>
+
+        <!-- ২৩ -->
+        <div class="question-card">
+            <div class="question-title">২৩. <span class="arabic">المسيح</span> কার উপাধি ছিল?</div>
+            <div class="options-grid">
+                <div class="option">ক. ইদরিস (আ)</div>
+                <div class="option">খ. হারুন (আ)</div>
+                <div class="option">গ. দাউদ (আ)</div>
+                <div class="option">ঘ. ঈসা (আ)</div>
+            </div>
+        </div>
+
+        <!-- ২৪ -->
+        <div class="question-card">
+            <div class="question-title">২৪. হযরত যাকারিয়া (আ) মারইয়াম (আ)-এর কেমন আত্মীয় ছিলেন?</div>
+            <div class="options-grid">
+                <div class="option">ক. নানা</div>
+                <div class="option">খ. দাদা</div>
+                <div class="option">গ. খালু</div>
+                <div class="option">ঘ. চাচা</div>
+            </div>
+        </div>
+
+        <!-- ২৫ -->
+        <div class="question-card">
+            <div class="question-title">২৫. <span class="arabic">إسرائيل</span> কোন নবির উপাধি?</div>
+            <div class="options-grid">
+                <div class="option">ক. আদম (আ)</div>
+                <div class="option">খ. ইউসুফ (আ)</div>
+                <div class="option">গ. ইয়াকুব (আ)</div>
+                <div class="option">ঘ. ইউনুস (আ)</div>
+            </div>
+        </div>
+
+        <!-- ২৬ -->
+        <div class="question-card">
+            <div class="question-title">২৬. পবিত্র কুরআনে ঈসা (আ)-কে কার সাথে তুলনা করা হয়েছে?</div>
+            <div class="options-grid">
+                <div class="option">ক. আদম (আ)</div>
+                <div class="option">খ. নূহ (আ)</div>
+                <div class="option">গ. মুসা (আ)</div>
+                <div class="option">ঘ. ইউসুফ (আ)</div>
+            </div>
+        </div>
+
+        <!-- ২৭ -->
+        <div class="question-card">
+            <div class="question-title">২৭. <span class="arabic">كَانَتْ</span> শব্দের جنس কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. مهموز فاء</div>
+                <div class="option">খ. مهموز عين</div>
+                <div class="option">গ. أجوف واوي</div>
+                <div class="option">ঘ. أجوف يائي</div>
+            </div>
+        </div>
+
+        <!-- ২৮ -->
+        <div class="question-card">
+            <div class="question-title">২৮. <span class="arabic">إنّ الله بما تعملون بصير</span> কোন প্রকার جملة?</div>
+            <div class="options-grid">
+                <div class="option">ক. إسمية</div>
+                <div class="option">খ. فعلية</div>
+                <div class="option">গ. شرطية</div>
+                <div class="option">ঘ. ظرفية</div>
+            </div>
+        </div>
+
+        <!-- ২৯ -->
+        <div class="question-card">
+            <div class="question-title">২৯. পৃথিবীর প্রথম মানুষ কে?</div>
+            <div class="options-grid">
+                <div class="option">ক. আদম (আ)</div>
+                <div class="option">খ. হাওয়া (আ)</div>
+                <div class="option">গ. মুহাম্মদ (স)</div>
+                <div class="option">ঘ. ইব্রাহিম (আ)</div>
+            </div>
+        </div>
+
+        <!-- ৩০ -->
+        <div class="question-card">
+            <div class="question-title">৩০. হারুত ও মারুত (<span class="arabic">هاروت وماروت</span>) ফেরেশতাদ্বয় কোন শহরে এসেছিলেন?</div>
+            <div class="options-grid">
+                <div class="option">ক. বসরা</div>
+                <div class="option">খ. কুফা</div>
+                <div class="option">গ. বাবেল</div>
+                <div class="option">ঘ. মাদইয়ান</div>
+            </div>
+        </div>
+
+        <!-- ৩১ -->
+        <div class="question-card">
+            <div class="question-title">৩১. <span class="arabic">ربا</span> শব্দের অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. সুদ</div>
+                <div class="option">খ. ঘুষ</div>
+                <div class="option">গ. দুর্নীতি</div>
+                <div class="option">ঘ. অত্যাচার</div>
+            </div>
+        </div>
+
+        <!-- ৩২ -->
+        <div class="question-card">
+            <div class="question-title">৩২. কার বিরুদ্ধে আল্লাহ তাআলা যুদ্ধ ঘোষণা করেন?</div>
+            <div class="options-grid">
+                <div class="option">ক. ঘুষখোর</div>
+                <div class="option">খ. সুদখোর</div>
+                <div class="option">গ. মদখোর</div>
+                <div class="option">ঘ. হারামখোর</div>
+            </div>
+        </div>
+
+      <!-- ৩৩ -->
+        <div class="question-card">
+            <div class="question-title">৩৩. <span class="arabic">قل أطيعوا الله</span> আয়াতাংশে ‘<span class="arabic">الله</span>’ শব্দটি তরকিবে কী হয়েছে?</div>
+            <div class="options-grid">
+                <div class="option">ক. مبتدأ</div>
+                <div class="option">খ. خبر</div>
+                <div class="option">গ. حال</div>
+                <div class="option">ঘ. مفعول</div>
+            </div>
+        </div>
+
+        <!-- ৩৪ -->
+        <div class="question-card">
+            <div class="question-title">৩৪. <span class="arabic">المسجد الحرام</span> কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. المسجد النبوي</div>
+                <div class="option">খ. المسجد الأقصى</div>
+                <div class="option">গ. المسجد ذو القبلتين</div>
+                <div class="option">ঘ. الكعبة المشرفة</div>
+            </div>
+        </div>
+
+        <!-- ৩৫ -->
+        <div class="question-card">
+            <div class="question-title">৩৫. প্রসিদ্ধ কারির সংখ্যা কতজন?</div>
+            <div class="options-grid">
+                <div class="option">ক. ৭</div>
+                <div class="option">খ. ৮</div>
+                <div class="option">গ. ৯</div>
+                <div class="option">ঘ. ১০</div>
+            </div>
+        </div>
+
+        <!-- ৩৬ -->
+        <div class="question-card">
+            <div class="question-title">৩৬. <span class="arabic">نون ساكن</span> ও <span class="arabic">تنوين</span> এর হুকুম কয়টি?</div>
+            <div class="options-grid">
+                <div class="option">ক. ২</div>
+                <div class="option">খ. ৩</div>
+                <div class="option">গ. ৪</div>
+                <div class="option">ঘ. ৫</div>
+            </div>
+        </div>
+
+        <!-- ৩৭ -->
+        <div class="question-card">
+            <div class="question-title">৩৭. <span class="arabic">أفضل العبادة تلاوة القرآن</span> কার বাণী?</div>
+            <div class="options-grid">
+                <div class="option">ক. আল্লাহর</div>
+                <div class="option">খ. নবির</div>
+                <div class="option">গ. সাহাবির</div>
+                <div class="option">ঘ. কবির</div>
+            </div>
+        </div>
+
+        <!-- ৩৮ -->
+        <div class="question-card">
+            <div class="question-title">৩৮. <span class="arabic">تجويد</span> শব্দের অর্থ কী?</div>
+            <div class="options-grid">
+                <div class="option">ক. সুন্দর করা</div>
+                <div class="option">খ. পরিষ্কার করা</div>
+                <div class="option">গ. ভাল বলা</div>
+                <div class="option">ঘ. সহজ করা</div>
+            </div>
+        </div>
+
+        <!-- ৩৯ -->
+        <div class="question-card">
+            <div class="question-title">৩৯. <span class="arabic">ما أنزل</span> শব্দে কোন ধরনের <span class="arabic">مد</span> হয়েছে?</div>
+            <div class="options-grid">
+                <div class="option">ক. متصل</div>
+                <div class="option">খ. منفصل</div>
+                <div class="option">গ. لين</div>
+                <div class="option">ঘ. بدل</div>
+            </div>
+        </div>
+
+        <!-- ৪০ -->
+        <div class="question-card">
+            <div class="question-title">৪০. <span class="arabic">ينفقون</span> শব্দের মধ্যে নুন সাকিনের কোন কায়দা হয়েছে?</div>
+            <div class="options-grid">
+                <div class="option">ক. اظهار</div>
+                <div class="option">খ. اقلاب</div>
+                <div class="option">গ. ادغام</div>
+                <div class="option">ঘ. اخفاء</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
