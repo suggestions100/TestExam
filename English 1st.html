@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Test Examination-2026 - English First Paper</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e5e7eb;
+            font-family: Arial, "Segoe UI", Tahoma, sans-serif;
+            color: #000;
+            font-size: 13.5px;
+            line-height: 1.45;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 8px 100px 8px;
+            overflow-x: hidden;
+        }
+
+        .page {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .draw-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            pointer-events: none;
+            touch-action: none;
+        }
+
+        .annotation-container {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            z-index: 99999;
+            direction: ltr;
+            user-select: none;
+            touch-action: none;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            width: 54px;
+            height: 54px;
+            background: #EDE8FE;
+            border-radius: 16px;
+            border: 2px solid #C4B5FD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(109, 40, 217, 0.35);
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
+        }
+
+        .toggle-btn:active {
+            transform: scale(0.92);
+        }
+
+        .vertical-toolbar {
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 8px 6px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+            border: 1px solid #E2E8F0;
+            animation: popUp 0.18s ease forwards;
+        }
+
+        .vertical-toolbar.open {
+            display: flex;
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: translateY(12px) scale(0.92); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .drag-handle {
+            width: 36px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            color: #94A3B8;
+            font-size: 16px;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .tool-item {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tool-item.active {
+            background: #E0EDFF;
+        }
+
+        .tool-item svg {
+            width: 22px;
+            height: 22px;
+            stroke: #1E293B;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .color-indicator {
+            width: 18px;
+            height: 4px;
+            border-radius: 10px;
+            margin-top: 2px;
+        }
+
+        .settings-panel {
+            position: absolute;
+            right: 64px;
+            bottom: 0;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 12px 14px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+            border: 1px solid #E2E8F0;
+            width: 210px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            z-index: 105;
+        }
+
+        .settings-panel.open {
+            display: flex;
+        }
+
+        .panel-header {
+            font-weight: bold;
+            color: #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #F1F5F9;
+            padding-bottom: 4px;
+        }
+
+        .color-list {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .color-bubble {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        .color-bubble.selected {
+            outline: 2.5px solid #2563eb;
+            transform: scale(1.15);
+        }
+
+        .size-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .size-slider {
+            flex-grow: 1;
+            height: 6px;
+            accent-color: #2563eb;
+            cursor: pointer;
+        }
+
+        .preview-dot-container {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F8FAFC;
+            border-radius: 50%;
+            border: 1px solid #E2E8F0;
+        }
+
+        .preview-dot {
+            background: #FF3B30;
+            border-radius: 50%;
+            transition: all 0.1s ease;
+        }
+
+        .exam-header {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .exam-header h2 {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .exam-header h3 {
+            font-size: 14.5px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .exam-header h4 {
+            font-size: 14.5px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .subject-code-box {
+            border: 1px solid #000;
+            padding: 1px 4px;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        .nb-text {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 2px 0 4px 0;
+        }
+
+        .part-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 4px 0 6px 0;
+            text-decoration: underline;
+        }
+
+        .page-num-top {
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .q-block {
+            margin-bottom: 9px;
+        }
+
+        .q-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 13.5px;
+            margin-bottom: 3px;
+        }
+
+        .q-marks {
+            white-space: nowrap;
+            font-size: 12.5px;
+        }
+
+        .passage-text {
+            text-align: justify;
+            line-height: 1.45;
+            margin-bottom: 5px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px 10px;
+            margin-top: 2px;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+
+        .options-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px 10px;
+            margin-top: 2px;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+
+        .match-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+            margin: 4px auto 6px auto;
+            text-align: center;
+            font-size: 12.5px;
+        }
+
+        .match-table th, .match-table td {
+            border: 1px solid #000;
+            padding: 3px 5px;
+            vertical-align: middle;
+        }
+
+        .sub-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sub-list li {
+            margin-bottom: 3px;
+            display: flex;
+            align-items: baseline;
+            text-align: justify;
+        }
+
+        .sub-list li span.label {
+            font-weight: bold;
+            min-width: 22px;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 820px) {
+            body {
+                padding: 20px 0 100px 0;
+            }
+            .page {
+                width: 210mm;
+                min-height: 297mm;
+                padding: 14mm 16mm;
+                border-radius: 0;
+            }
+        }
+
+        @media print {
+            body {
+                background: transparent;
+                padding: 0;
+            }
+            .annotation-container, .settings-panel {
+                display: none !important;
+            }
+            .page {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 12mm 14mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= Draggable Floating Annotation Toolbar ================= -->
+    <div class="annotation-container" id="draggableToolbar">
+        <button class="toggle-btn" id="toggleBtn" onclick="toggleToolbar()" title="Open/Close Toolbar">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 18.5 3 20l1.5-4L16.5 3.5z"></path>
+                <path d="M4 8c2-2 4 0 5-1s2-3 4-2"></path>
+                <path d="M14 17c1 2 3 3 5 1"></path>
+            </svg>
+        </button>
+
+        <div class="vertical-toolbar" id="toolbar">
+            <div class="drag-handle" id="dragHandle" title="Drag to move toolbar">
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="#94A3B8">
+                    <circle cx="4" cy="3" r="1.5"/><circle cx="10" cy="3" r="1.5"/><circle cx="16" cy="3" r="1.5"/>
+                    <circle cx="4" cy="9" r="1.5"/><circle cx="10" cy="9" r="1.5"/><circle cx="16" cy="9" r="1.5"/>
+                </svg>
+            </div>
+
+            <button class="tool-item active" id="btn-pen" onclick="selectTool('pen')" title="Pen">
+                <svg viewBox="0 0 24 24" style="fill: #1E293B;">
+                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+                <span class="color-indicator" id="pen-indicator" style="background: #FF3B30;"></span>
+            </button>
+
+            <button class="tool-item" id="btn-highlighter" onclick="selectTool('highlighter')" title="Highlighter">
+                <svg viewBox="0 0 24 24">
+                    <path d="m14 4 6 6-9 9H5v-6l9-9zM18 10l-4-4"/>
+                    <path d="M3 21h6"/>
+                </svg>
+                <span class="color-indicator" id="highlighter-indicator" style="background: #FDE047;"></span>
+            </button>
+
+            <button class="tool-item" id="btn-eraser" onclick="selectTool('eraser')" title="Eraser">
+                <svg viewBox="0 0 24 24">
+                    <path d="m18 13-6-6-7.5 7.5a2.12 2.12 0 0 0 0 3L7 20h12v-2l-4-4"/>
+                    <line x1="7" y1="20" x2="17" y2="20"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="undo()" title="Undo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 14 4 9l5-5"/>
+                    <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="redo()" title="Redo">
+                <svg viewBox="0 0 24 24">
+                    <path d="m15 14 5-5-5-5"/>
+                    <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="toggleSettings()" title="Settings" style="background: #F1F5F9;">
+                <svg viewBox="0 0 24 24" style="stroke: #2563eb;">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="settings-panel" id="settingsPanel">
+            <div class="panel-header">
+                <span id="panelTitle">Color & Size</span>
+                <span style="cursor:pointer; font-size:16px; padding:2px 6px;" onclick="closeSettings()">✕</span>
+            </div>
+            
+            <div class="color-list" id="colorList"></div>
+
+            <div style="font-size:12px; color:#64748B;">Thickness:</div>
+            <div class="size-box">
+                <input type="range" class="size-slider" id="sizeSlider" min="1" max="40" value="3" oninput="changeSize(this.value)">
+                <div class="preview-dot-container">
+                    <div class="preview-dot" id="previewDot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="page" id="page-1">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="exam-header">
+            <h2>Test Examination-2026</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                <div style="width: 100px;"></div>
+                <h3>Dakhil Class Ten</h3>
+                <div style="font-size: 13px; font-weight: bold;">
+                    Subject Code : <span class="subject-code-box">1|3|7</span>
+                </div>
+            </div>
+            <h4>Subject : English First Paper</h4>
+            <div class="meta-info">
+                <div>Time : 3 Hours</div>
+                <div>Full Marks : 100</div>
+            </div>
+            <div class="nb-text">[N.B. : The figures in the right margin indicate full marks.]</div>
+            <div class="part-title">Part-A : Reading (Marks : 70)</div>
+        </div>
+
+        <div class="passage-text" style="font-size: 12.5px; margin-bottom: 8px;">
+            <strong>Read the following passage and answer the questions no 1, 2 and 3.</strong><br>
+            'Heritage' is what we inherit from the past, live with in the present and then pass on to our children or future generations. Our unique source of life and inspiration is our cultural and natural heritage. When we speak of 'World Heritage', it indicates places and sites that we inherited from the past and pass on to the future generation of the entire world.<br>
+            The 'Shat Gambuj Mosque' in Bagerhat is such a heritage. It became a UNESCO World Heritage Site in 1985.<br>
+            Originally, the historic Mosque City was known as 'Khalifatabad'. It is situated at the outskirts of Bagerhat town--- not very far from the dense mangrove forest of the Sundarbans. Khalifatabad was a Muslim colony. It was founded by the Turkish general, a saint warrior Ulugh Khan Jahan in the 15th century. The infrastructure of the city reveals significant technical skills in many mosques as well as early Islamic monuments. Baked bricks were used for the construction of the buildings. The planning of the city was dominated by the tradition of Islamic architecture and the decorations were a combination of Mughal and Turkish architecture.<br>
+            Khan Jahan built a network of roads, bridges, public buildings and reservoirs to make the city habitable. There were about 360 mosques in the city. Among them the most remarkable is the multi-domed Shat Gambuj Mosque. The mosque is unique in the sense that it has 60 pillars that support the roof, with 77 low height domes. The 4 towers at 4 corners have smaller domes at the top as well. The vast prayer hall has 11 arched doorways on the east and 7 each on the north and south for light and ventilation. It has 7 aisles running along the length of the mosque and 11 deep curves between the slender stone columns. These columns support the curving arches created by the domes. The thickness of the arches is 6 feet and have slightly narrowing hollow and round wall.<br>
+            The west wall in the interior has 11 'mihrabs' (niche in mosque pointing towards Makkah). These mihrabs are decorated with stonework and terracotta. The floor of the mosque is made of brick.<br>
+            Besides being used as a prayer hall, Khan Jahan used the mosque as his court too. Today, it is one of the greatest tourist attractions and one of the best architectural beauties of Bangladesh.
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="page" id="page-2">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="page-num-top">ii</div>
+
+        <!-- Question 1 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>1. Choose the best answer from the alternatives.</span>
+                <span class="q-marks">1 &times; 7 = 7</span>
+            </div>
+            <ul class="sub-list" style="flex-direction: column;">
+                <li>
+                    <span class="label">(a)</span>
+                    <div style="width: 100%;">
+                        <span>What does the word 'indicate' used in the text refer to &mdash;</span>
+                        <div class="options-grid">
+                            <span>i. mislead</span>
+                            <span>ii. delete</span>
+                            <span>iii. denote</span>
+                            <span>iv. hide</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="label">(b)</span>
+                    <div style="width: 100%;">
+                        <span>The word 'habitable' used in the text is a/an &mdash;.</span>
+                        <div class="options-grid">
+                            <span>i. verb</span>
+                            <span>ii. adjective</span>
+                            <span>iii. adverb</span>
+                            <span>iv. noun</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="label">(c)</span>
+                    <div style="width: 100%;">
+                        <span>'Heritage' is related to &mdash;.</span>
+                        <div class="options-grid">
+                            <span>i. past</span>
+                            <span>ii. present</span>
+                            <span>iii. future</span>
+                            <span>iv. all the options</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="label">(d)</span>
+                    <div style="width: 100%;">
+                        <span>The word 'unique' means &mdash;.</span>
+                        <div class="options-grid-2">
+                            <span>i. distinctive</span>
+                            <span>ii. universal</span>
+                        </div>
+                        <div class="options-grid-2">
+                            <span>iii. conventional</span>
+                            <span>iv. traditional</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="label">(e)</span>
+                    <div style="width: 100%;">
+                        <span>The surface of the mosque is of &mdash;.</span>
+                        <div class="options-grid">
+                            <span>i. stones</span>
+                            <span>ii. bricks</span>
+                            <span>iii. soil</span>
+                            <span>iv. marvels</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="label">(f)</span>
+                    <div style="width: 100%;">
+                        <span>There are almost &mdash; mosques in Bagerhat.</span>
+                        <div class="options-grid">
+                            <span>i. 470</span>
+                            <span>ii. 360</span>
+                            <span>iii. 350</span>
+                            <span>iv. 340</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="label">(g)</span>
+                    <div style="width: 100%;">
+                        <span>In the &mdash; century the Shat Gambuj Mosque was established.</span>
+                        <div class="options-grid">
+                            <span>i. 14<sup>th</sup></span>
+                            <span>ii. 15<sup>th</sup></span>
+                            <span>iii. 16<sup>th</sup></span>
+                            <span>iv. 17<sup>th</sup></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>2. Answer the following questions.</span>
+                <span class="q-marks">2 &times; 5 = 10</span>
+            </div>
+            <ul class="sub-list">
+                <li><span class="label">(a)</span> <span>When did the Shat Gambuj Mosque become a World Heritage?</span></li>
+                <li><span class="label">(b)</span> <span>Where is Khalifatabad situated?</span></li>
+                <li><span class="label">(c)</span> <span>What does the infrastructure of the city reveal?</span></li>
+                <li><span class="label">(d)</span> <span>What did Khan Jahan build in Bagerhat?</span></li>
+                <li><span class="label">(e)</span> <span>What do you understand by 'World Heritage'?</span></li>
+            </ul>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>3. Read the above passage and fill in each gap with a suitable word.</span>
+                <span class="q-marks">1 &times; 5 = 5</span>
+            </div>
+            <div class="passage-text" style="font-size: 13px;">
+                Heritage, that we inherit from the past is our (a) &mdash;&mdash;. In Bangladesh, we have many remarkable heritages which have already been (b) &mdash;&mdash; by UNESCO as the World Heritage. All of them. 'Shat Gambuj Mosque of Bagerhat is one of the most imposing (c) &mdash;&mdash; beauties. The decoration of the mosque (d) &mdash;&mdash; the touch of remarkable technical sign. It was built by a great (e)&mdash;&mdash; and saint Ulugh Khan Jahan Ali.
+            </div>
+        </div>
+
+        <div class="passage-text" style="font-size: 12px; margin-top: 6px; font-weight: bold;">
+            Read the following passage carefully and answer the questions no. 4 and 5.
+        </div>
+        <div class="passage-text" style="font-size: 12px;">
+            Albert Einstein, the greatest scientist of the twentieth century and one of the supreme intellects of all time, was born in March 14, 1879 in the city of Ulm in Germany. He attended high school in Switzerland and became a Swiss citizen in 1901.<br>
+            He was appointed an examiner at the Swiss Patent Office in 1902. He served at this post for three years. He received his Ph. D in 1905 from the University of Zurich, but was unable to find an academic position at that time. However, the same year he began to publish original papers on the theoretical aspects of problems of Physics. Within a few years, these papers, particularly the one on relativity, established his reputation as one of the most brilliant and original scientists in the world. His theories were highly controversial. In spite of this, he was appointed a Professor at the University of Berlin, at the same time becoming a member of the Prussian Academy of Science. In 1921 he was awarded Nobel Prize for Physics.
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 3 ==================== -->
+    <div class="page" id="page-3">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="page-num-top">iii</div>
+
+        <div class="passage-text" style="font-size: 12px; margin-bottom: 6px;">
+            Einstein's situation in Germany became precious when Hitler rose to power. He moved to Princeton, New Jersey, U.S.A, in 1933 to work at the Institute for Advanced Study and in 1940, he became a citizen of the United States. Einstein's first marriage ended in divorce, but his second was quite happy. He had two children, both of them were boys. He died in 18 April 1955 in Princeton.
+        </div>
+
+        <!-- Question 4 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>4. Complete the following table with information from the text.</span>
+                <span class="q-marks">1 &times; 5 = 5</span>
+            </div>
+            <table class="match-table">
+                <tr>
+                    <th colspan="3" style="text-align: center; font-size: 13px;">Albert Einstein</th>
+                </tr>
+                <tr>
+                    <td>Regarded as</td>
+                    <td colspan="2">The greatest scientist of the twentieth century</td>
+                </tr>
+                <tr>
+                    <td>Did Ph.D</td>
+                    <td colspan="2">From (i)&mdash;&mdash;&mdash;&mdash;</td>
+                </tr>
+                <tr>
+                    <td><strong>Who/ What</strong></td>
+                    <td><strong>Event</strong></td>
+                    <td><strong>Place/ Time/ Creation/ Award/ Others</strong></td>
+                </tr>
+                <tr>
+                    <td>Albert Einstein</td>
+                    <td>was born</td>
+                    <td>(ii)&mdash;&mdash;&mdash;&mdash;.</td>
+                </tr>
+                <tr>
+                    <td>(iii)&mdash;&mdash;&mdash;&mdash;</td>
+                    <td>attended high school in</td>
+                    <td>Switzerland.</td>
+                </tr>
+                <tr>
+                    <td>He was appointed</td>
+                    <td>a Patent Officer</td>
+                    <td>(iv)&mdash;&mdash;&mdash;&mdash;.</td>
+                </tr>
+                <tr>
+                    <td>He was awarded</td>
+                    <td>Nobel Prize for Physics</td>
+                    <td>(v)&mdash;&mdash;&mdash;&mdash;.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>5. Write the summary of the passage given above.</span>
+                <span class="q-marks">10</span>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>6. Match the parts of sentences given in columns A, B and C to write five complete sentences.</span>
+                <span class="q-marks">1 &times; 5 = 5</span>
+            </div>
+            <table class="match-table" style="font-size: 11.5px; text-align: left;">
+                <tr>
+                    <th style="width: 33%;">Column 'A'</th>
+                    <th style="width: 33%;">Column 'B'</th>
+                    <th style="width: 34%;">Column 'C'</th>
+                </tr>
+                <tr>
+                    <td>(a) Patriotism is a great virtue</td>
+                    <td>i. to be ready to fight against</td>
+                    <td>i. themselves to work for the country.</td>
+                </tr>
+                <tr>
+                    <td>(b) It is such a virtue</td>
+                    <td>ii. to be patriot and to be devoted</td>
+                    <td>ii. all oppressions that can hinder our progress.</td>
+                </tr>
+                <tr>
+                    <td>(c) Patriotism inspires us</td>
+                    <td>iii. that inspire children to prepare</td>
+                    <td>iii. dream of a developed nation.</td>
+                </tr>
+                <tr>
+                    <td>(d) So, we all should encourage our children</td>
+                    <td>iv. without which we cannot</td>
+                    <td>iv. to their respective duties and responsibilities.</td>
+                </tr>
+                <tr>
+                    <td>(e) Radio and television should telecast programmes</td>
+                    <td>v. for which a citizen doesn't hesitate</td>
+                    <td>v. to shed the last drop of his blood.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 4 ==================== -->
+    <div class="page" id="page-4">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="page-num-top">iv</div>
+
+        <!-- Question 7 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>7. Re-arrange the following sentences according to sequence and re-write them in a paragraph.</span>
+                <span class="q-marks">1 &times; 8 = 8</span>
+            </div>
+            <ul class="sub-list" style="font-size: 12.5px;">
+                <li><span class="label">(a)</span> <span>He also believed that the west would be more receptive to his creative genius.</span></li>
+                <li><span class="label">(b)</span> <span>He was born in Sagordari on the bank of the Kopotaksho river.</span></li>
+                <li><span class="label">(c)</span> <span>Since his adolescence he started believing that he was born on the wrong side of the planet.</span></li>
+                <li><span class="label">(d)</span> <span>The village is in Keshabpur Upazila under Jashore district.</span></li>
+                <li><span class="label">(e)</span> <span>Michael Madhusudan Dutt was a celebrated poet and dramatist in Bengali Literature.</span></li>
+                <li><span class="label">(f)</span> <span>From an early age, Dutt aspired to be an Englishman in form and manner.</span></li>
+                <li><span class="label">(g)</span> <span>In his childhood, he was recognised by his teachers as a precious child with a gift of literary talent.</span></li>
+                <li><span class="label">(h)</span> <span>Though he was born in a sophisticated Hindu Family, he was converted to Christianity.</span></li>
+            </ul>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>8. Answer the following questions from poems. (Any 5 out of 8) :</span>
+                <span class="q-marks">2 &times; 5 = 10</span>
+            </div>
+            <ul class="sub-list" style="font-size: 12.5px;">
+                <li><span class="label">(a)</span> <span>Who is the poet of the poem "Books"?</span></li>
+                <li><span class="label">(b)</span> <span>What does the poet compare books to in the poem?</span></li>
+                <li><span class="label">(c)</span> <span>How are the two mothers different yet the same?</span></li>
+                <li><span class="label">(d)</span> <span>What is the central theme of the poem "The Sands of Dee"?</span></li>
+                <li><span class="label">(e)</span> <span>How does the speaker feel about the fleeting nature of Time?</span></li>
+                <li><span class="label">(f)</span> <span>Why does the speaker mention "promises to keep"?</span></li>
+                <li><span class="label">(g)</span> <span>What does the line "Feast, and your halls are crowded" mean in the poem "Solitude"?</span></li>
+                <li><span class="label">(h)</span> <span>What does the poet mean by 'useless years'?</span></li>
+            </ul>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>9. Answer the following questions from stories (Any 5 out of 8) :</span>
+                <span class="q-marks">2 &times; 5 = 10</span>
+            </div>
+            <ul class="sub-list" style="font-size: 12.5px;">
+                <li><span class="label">(a)</span> <span>What was written in the bond?</span></li>
+                <li><span class="label">(b)</span> <span>Who was Portia? What do you know about her?</span></li>
+                <li><span class="label">(c)</span> <span>Do you think that Shylock was an inhumane person? Why/Why not?</span></li>
+                <li><span class="label">(d)</span> <span>What did Portia beg to Shylock?</span></li>
+                <li><span class="label">(e)</span> <span>Why didn't Rosamond examine the jar before buying it?</span></li>
+                <li><span class="label">(f)</span> <span>What did Rosamond take the jar for?</span></li>
+                <li><span class="label">(g)</span> <span>What were the two things Rosamond wanted to buy?</span></li>
+                <li><span class="label">(h)</span> <span>What was Rosamond's last request to her mother?</span></li>
+            </ul>
+        </div>
+
+        <!-- Part-B: Writing -->
+        <div class="part-title" style="margin-top: 8px;">Part-B : Writing (Marks : 30)</div>
+
+        <!-- Question 10 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>10. Read the beginning of the following story and complete it in your own way. Give a suitable title to it.</span>
+                <span class="q-marks">15</span>
+            </div>
+            <div class="passage-text" style="font-size: 12.5px;">
+                The King of Iran used to invite the great poet Sheikh Saadi to his court. Once on his way to the king's court &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="q-block">
+            <div class="q-title">
+                <span>11. Write a dialogue between two friends about the merits and demerits of using mobile phone.</span>
+                <span class="q-marks">15</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Drawing & Annotation Script ================= -->
+    <script>
+        let isToolbarOpen = false;
+        let isSettingsOpen = false;
+        let currentTool = 'pen';
+        let activeCanvas = null;
+
+        let penColor = '#FF3B30';
+        let penSize = 3;
+        let highlighterColor = 'rgba(253, 224, 71, 0.35)';
+        let highlighterSize = 22;
+        let eraserSize = 25;
+
+        const penColors = ['#FF3B30', '#007AFF', '#111827', '#10B981'];
+        const highlighterColors = [
+            'rgba(253, 224, 71, 0.35)',
+            'rgba(134, 239, 172, 0.35)',
+            'rgba(253, 186, 116, 0.35)',
+            'rgba(244, 114, 182, 0.30)'
+        ];
+
+        const history = new Map();
+
+        function refreshCanvases() {
+            document.querySelectorAll('.page').forEach(page => {
+                const canvas = page.querySelector('.draw-canvas');
+                if (!canvas) return;
+
+                const w = page.clientWidth;
+                const h = page.clientHeight;
+                if (canvas.width !== w || canvas.height !== h) {
+                    canvas.width = w;
+                    canvas.height = h;
+                }
+
+                if (!history.has(canvas)) {
+                    history.set(canvas, { undo: [], redo: [] });
+                    saveCanvasState(canvas);
+                    attachCanvasDrawEvents(canvas);
+                }
+            });
+        }
+
+        refreshCanvases();
+        window.addEventListener('load', refreshCanvases);
+        window.addEventListener('resize', refreshCanvases);
+
+        function toggleToolbar() {
+            isToolbarOpen = !isToolbarOpen;
+            const toolbar = document.getElementById('toolbar');
+            
+            if (isToolbarOpen) {
+                refreshCanvases();
+                toolbar.classList.add('open');
+            } else {
+                toolbar.classList.remove('open');
+                closeSettings();
+            }
+
+            document.querySelectorAll('.draw-canvas').forEach(c => {
+                c.style.pointerEvents = isToolbarOpen ? 'auto' : 'none';
+            });
+        }
+
+        function selectTool(tool) {
+            currentTool = tool;
+            document.getElementById('btn-pen').classList.toggle('active', tool === 'pen');
+            document.getElementById('btn-highlighter').classList.toggle('active', tool === 'highlighter');
+            document.getElementById('btn-eraser').classList.toggle('active', tool === 'eraser');
+            
+            if (isSettingsOpen) {
+                updateSettingsUI();
+            }
+        }
+
+        function toggleSettings() {
+            isSettingsOpen = !isSettingsOpen;
+            const panel = document.getElementById('settingsPanel');
+            if (isSettingsOpen) {
+                panel.classList.add('open');
+                updateSettingsUI();
+            } else {
+                panel.classList.remove('open');
+            }
+        }
+
+        function closeSettings() {
+            isSettingsOpen = false;
+            document.getElementById('settingsPanel').classList.remove('open');
+        }
+
+        function updateSettingsUI() {
+            const title = document.getElementById('panelTitle');
+            const colorList = document.getElementById('colorList');
+            const slider = document.getElementById('sizeSlider');
+            const previewDot = document.getElementById('previewDot');
+
+            colorList.innerHTML = '';
+
+            if (currentTool === 'pen') {
+                title.innerText = 'Pen Color & Size';
+                colorList.style.display = 'flex';
+                slider.min = 1;
+                slider.max = 14;
+                slider.value = penSize;
+                previewDot.style.background = penColor;
+                previewDot.style.width = penSize * 2 + 'px';
+                previewDot.style.height = penSize * 2 + 'px';
+
+                penColors.forEach(c => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'color-bubble' + (c === penColor ? ' selected' : '');
+                    bubble.style.background = c;
+                    bubble.onclick = () => {
+                        penColor = c;
+                        document.getElementById('pen-indicator').style.background = c;
+                        updateSettingsUI();
+                    };
+                    colorList.appendChild(bubble);
+                });
+            } else if (currentTool === 'highlighter') {
+                title.innerText = 'Highlighter Color & Size';
+                colorList.style.display = 'flex';
+                slider.min = 12;
+                slider.max = 35;
+                slider.value = highlighterSize;
+                previewDot.style.background = highlighterColor;
+                previewDot.style.width = Math.min(26, highlighterSize) + 'px';
+                previewDot.style.height = Math.min(26, highlighterSize) + 'px';
+
+                highlighterColors.forEach(c => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'color-bubble' + (c === highlighterColor ? ' selected' : '');
+                    bubble.style.background = c;
+                    bubble.onclick = () => {
+                        highlighterColor = c;
+                        document.getElementById('highlighter-indicator').style.background = c;
+                        updateSettingsUI();
+                    };
+                    colorList.appendChild(bubble);
+                });
+            } else {
+                title.innerText = 'Eraser Size';
+                colorList.style.display = 'none';
+                slider.min = 8;
+                slider.max = 50;
+                slider.value = eraserSize;
+                previewDot.style.background = '#94A3B8';
+                previewDot.style.width = Math.min(28, eraserSize / 1.5) + 'px';
+                previewDot.style.height = Math.min(28, eraserSize / 1.5) + 'px';
+            }
+        }
+
+        function changeSize(val) {
+            val = parseInt(val);
+            const previewDot = document.getElementById('previewDot');
+            if (currentTool === 'pen') {
+                penSize = val;
+                previewDot.style.width = val * 2 + 'px';
+                previewDot.style.height = val * 2 + 'px';
+            } else if (currentTool === 'highlighter') {
+                highlighterSize = val;
+                previewDot.style.width = Math.min(26, val) + 'px';
+                previewDot.style.height = Math.min(26, val) + 'px';
+            } else {
+                eraserSize = val;
+                previewDot.style.width = Math.min(28, val / 1.5) + 'px';
+                previewDot.style.height = Math.min(28, val / 1.5) + 'px';
+            }
+        }
+
+        function saveCanvasState(canvas) {
+            const ctx = canvas.getContext('2d');
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const h = history.get(canvas);
+            if (h) {
+                h.undo.push(data);
+                if (h.undo.length > 20) h.undo.shift();
+                h.redo = [];
+            }
+        }
+
+        function undo() {
+            if (!activeCanvas) activeCanvas = document.querySelector('.draw-canvas');
+            const h = history.get(activeCanvas);
+            if (h && h.undo.length > 1) {
+                const current = h.undo.pop();
+                h.redo.push(current);
+                const prev = h.undo[h.undo.length - 1];
+                activeCanvas.getContext('2d').putImageData(prev, 0, 0);
+            }
+        }
+
+        function redo() {
+            if (!activeCanvas) activeCanvas = document.querySelector('.draw-canvas');
+            const h = history.get(activeCanvas);
+            if (h && h.redo.length > 0) {
+                const next = h.redo.pop();
+                h.undo.push(next);
+                activeCanvas.getContext('2d').putImageData(next, 0, 0);
+            }
+        }
+
+        function attachCanvasDrawEvents(canvas) {
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+            let lastX = 0, lastY = 0;
+
+            function getCoords(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                return {
+                    x: (clientX - rect.left) * scaleX,
+                    y: (clientY - rect.top) * scaleY
+                };
+            }
+
+            function start(e) {
+                if (!isToolbarOpen) return;
+                activeCanvas = canvas;
+                isDrawing = true;
+                const pos = getCoords(e);
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function move(e) {
+                if (!isDrawing || !isToolbarOpen) return;
+                if (e.cancelable) e.preventDefault();
+
+                const pos = getCoords(e);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                if (currentTool === 'eraser') {
+                    ctx.globalCompositeOperation = 'destination-out';
+                    ctx.lineWidth = eraserSize;
+                } else if (currentTool === 'highlighter') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = highlighterColor;
+                    ctx.lineWidth = highlighterSize;
+                } else {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = penColor;
+                    ctx.lineWidth = penSize;
+                }
+
+                ctx.stroke();
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function end() {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveCanvasState(canvas);
+                }
+            }
+
+            canvas.addEventListener('mousedown', start);
+            canvas.addEventListener('mousemove', move);
+            canvas.addEventListener('mouseup', end);
+            canvas.addEventListener('mouseleave', end);
+
+            canvas.addEventListener('touchstart', start, { passive: false });
+            canvas.addEventListener('touchmove', move, { passive: false });
+            canvas.addEventListener('touchend', end);
+        }
+
+        const dragContainer = document.getElementById('draggableToolbar');
+        const dragHandle = document.getElementById('dragHandle');
+
+        let isDragging = false;
+        let startClientX = 0, startClientY = 0;
+        let startBottom = 0, startRight = 0;
+
+        function startDrag(e) {
+            const evt = e.touches ? e.touches[0] : e;
+            isDragging = true;
+            startClientX = evt.clientX;
+            startClientY = evt.clientY;
+
+            const rect = dragContainer.getBoundingClientRect();
+            startBottom = window.innerHeight - rect.bottom;
+            startRight = window.innerWidth - rect.right;
+
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function onDrag(e) {
+            if (!isDragging) return;
+            const evt = e.touches ? e.touches[0] : e;
+            const dx = evt.clientX - startClientX;
+            const dy = evt.clientY - startClientY;
+
+            let newBottom = startBottom - dy;
+            let newRight = startRight - dx;
+
+            newBottom = Math.max(15, Math.min(newBottom, window.innerHeight - 380));
+            newRight = Math.max(15, Math.min(newRight, window.innerWidth - 75));
+
+            dragContainer.style.bottom = newBottom + 'px';
+            dragContainer.style.right = newRight + 'px';
+            dragContainer.style.top = 'auto';
+            dragContainer.style.left = 'auto';
+
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function endDrag() {
+            isDragging = false;
+        }
+
+        dragHandle.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', onDrag);
+        window.addEventListener('mouseup', endDrag);
+
+        dragHandle.addEventListener('touchstart', startDrag, { passive: false });
+        window.addEventListener('touchmove', onDrag, { passive: false });
+        window.addEventListener('touchend', endDrag);
+    </script>
+</body>
+</html>
