@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Meta Tags for Facebook, Messenger, and Social Share -->
+    <title>নির্বাচনি পরীক্ষা-২০২৬ | ইসলামের ইতিহাস (সৃজনশীল ও সংক্ষিপ্ত প্রশ্ন) - দাখিল দশম শ্রেণি</title>
+    <meta name="description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর ইসলামের ইতিহাস বিষয়ের সৃজনশীল প্রশ্ন এবং সংক্ষিপ্ত প্রশ্নগুলোর সম্পূর্ণ সেট।">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:title" content="নির্বাচনি পরীক্ষা-২০২৬ | ইসলামের ইতিহাস (সৃজনশীল ও সংক্ষিপ্ত প্রশ্ন)">
+    <meta property="og:description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর ইসলামের ইতিহাস বিষয়ের সৃজনশীল ও সংক্ষিপ্ত প্রশ্নপত্রটি দেখে নিন।">
+    <meta property="og:type" content="website">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e5e7eb;
+            font-family: Arial, "Segoe UI", "SolaimanLipi", Tahoma, sans-serif;
+            color: #000;
+            font-size: 13px;
+            line-height: 1.45;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 8px 100px 8px;
+            overflow-x: hidden;
+        }
+
+        .page {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .draw-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            pointer-events: none;
+            touch-action: none;
+        }
+
+        .annotation-container {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            z-index: 99999;
+            direction: ltr;
+            user-select: none;
+            touch-action: none;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            width: 54px;
+            height: 54px;
+            background: #EDE8FE;
+            border-radius: 16px;
+            border: 2px solid #C4B5FD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(109, 40, 217, 0.35);
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
+        }
+
+        .toggle-btn:active {
+            transform: scale(0.92);
+        }
+
+        .vertical-toolbar {
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 8px 6px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+            border: 1px solid #E2E8F0;
+            animation: popUp 0.18s ease forwards;
+        }
+
+        .vertical-toolbar.open {
+            display: flex;
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: translateY(12px) scale(0.92); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .drag-handle {
+            width: 36px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            color: #94A3B8;
+            font-size: 16px;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .tool-item {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tool-item.active {
+            background: #E0EDFF;
+        }
+
+        .tool-item svg {
+            width: 22px;
+            height: 22px;
+            stroke: #1E293B;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .color-indicator {
+            width: 18px;
+            height: 4px;
+            border-radius: 10px;
+            margin-top: 2px;
+        }
+
+        .settings-panel {
+            position: absolute;
+            right: 64px;
+            bottom: 0;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 12px 14px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+            border: 1px solid #E2E8F0;
+            width: 210px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            z-index: 105;
+        }
+
+        .settings-panel.open {
+            display: flex;
+        }
+
+        .panel-header {
+            font-weight: bold;
+            color: #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #F1F5F9;
+            padding-bottom: 4px;
+        }
+
+        .color-list {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .color-bubble {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        .color-bubble.selected {
+            outline: 2.5px solid #2563eb;
+            transform: scale(1.15);
+        }
+
+        .size-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .size-slider {
+            flex-grow: 1;
+            height: 6px;
+            accent-color: #2563eb;
+            cursor: pointer;
+        }
+
+        .preview-dot-container {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F8FAFC;
+            border-radius: 50%;
+            border: 1px solid #E2E8F0;
+        }
+
+        .preview-dot {
+            background: #FF3B30;
+            border-radius: 50%;
+            transition: all 0.1s ease;
+        }
+
+        .exam-header {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .exam-header h2 {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .exam-header h3 {
+            font-size: 14.5px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .exam-header h4 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12.5px;
+            font-weight: bold;
+            margin-top: 3px;
+        }
+
+        .subject-code-box {
+            border: 1px solid #000;
+            padding: 1px 6px;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        .instruction-box {
+            font-size: 11px;
+            border: 1px solid #000;
+            padding: 4px 6px;
+            margin: 5px 0 8px 0;
+            text-align: justify;
+        }
+
+        .page-num-top {
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 13.5px;
+            margin: 6px 0;
+            text-decoration: underline;
+        }
+
+        .q-block {
+            margin-bottom: 8px;
+        }
+
+        .cq-stem {
+            font-weight: 600;
+            margin-bottom: 3px;
+            text-align: justify;
+        }
+
+        .cq-questions {
+            margin-left: 12px;
+        }
+
+        .cq-q {
+            margin-bottom: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .sub-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sub-list li {
+            margin-bottom: 3px;
+            display: flex;
+            align-items: baseline;
+            text-align: justify;
+        }
+
+        .sub-list li span.label {
+            font-weight: normal;
+            width: 100%;
+        }
+
+        @media (min-width: 820px) {
+            body {
+                padding: 20px 0 100px 0;
+            }
+            .page {
+                width: 210mm;
+                min-height: 297mm;
+                padding: 14mm 16mm;
+                border-radius: 0;
+            }
+        }
+
+        @media print {
+            body {
+                background: transparent;
+                padding: 0;
+            }
+            .annotation-container, .settings-panel {
+                display: none !important;
+            }
+            .page {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 12mm 14mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= Draggable Floating Annotation Toolbar ================= -->
+    <div class="annotation-container" id="draggableToolbar">
+        <button class="toggle-btn" id="toggleBtn" onclick="toggleToolbar()" title="Open/Close Toolbar">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 18.5 3 20l1.5-4L16.5 3.5z"></path>
+                <path d="M4 8c2-2 4 0 5-1s2-3 4-2"></path>
+                <path d="M14 17c1 2 3 3 5 1"></path>
+            </svg>
+        </button>
+
+        <div class="vertical-toolbar" id="toolbar">
+            <div class="drag-handle" id="dragHandle" title="Drag to move toolbar">
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="#94A3B8">
+                    <circle cx="4" cy="3" r="1.5"/><circle cx="10" cy="3" r="1.5"/><circle cx="16" cy="3" r="1.5"/>
+                    <circle cx="4" cy="9" r="1.5"/><circle cx="10" cy="9" r="1.5"/><circle cx="16" cy="9" r="1.5"/>
+                </svg>
+            </div>
+
+            <button class="tool-item active" id="btn-pen" onclick="selectTool('pen')" title="Pen">
+                <svg viewBox="0 0 24 24" style="fill: #1E293B;">
+                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+                <span class="color-indicator" id="pen-indicator" style="background: #FF3B30;"></span>
+            </button>
+
+            <button class="tool-item" id="btn-highlighter" onclick="selectTool('highlighter')" title="Highlighter">
+                <svg viewBox="0 0 24 24">
+                    <path d="m14 4 6 6-9 9H5v-6l9-9zM18 10l-4-4"/>
+                    <path d="M3 21h6"/>
+                </svg>
+                <span class="color-indicator" id="highlighter-indicator" style="background: #FDE047;"></span>
+            </button>
+
+            <button class="tool-item" id="btn-eraser" onclick="selectTool('eraser')" title="Eraser">
+                <svg viewBox="0 0 24 24">
+                    <path d="m18 13-6-6-7.5 7.5a2.12 2.12 0 0 0 0 3L7 20h12v-2l-4-4"/>
+                    <line x1="7" y1="20" x2="17" y2="20"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="undo()" title="Undo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 14 4 9l5-5"/>
+                    <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="redo()" title="Redo">
+                <svg viewBox="0 0 24 24">
+                    <path d="m15 14 5-5-5-5"/>
+                    <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="toggleSettings()" title="Settings" style="background: #F1F5F9;">
+                <svg viewBox="0 0 24 24" style="stroke: #2563eb;">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="settings-panel" id="settingsPanel">
+            <div class="panel-header">
+                <span id="panelTitle">Color & Size</span>
+                <span style="cursor:pointer; font-size:16px; padding:2px 6px;" onclick="closeSettings()">✕</span>
+            </div>
+            
+            <div class="color-list" id="colorList"></div>
+
+            <div style="font-size:12px; color:#64748B;">Thickness:</div>
+            <div class="size-box">
+                <input type="range" class="size-slider" id="sizeSlider" min="1" max="40" value="3" oninput="changeSize(this.value)">
+                <div class="preview-dot-container">
+                    <div class="preview-dot" id="previewDot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="page" id="page-1">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="exam-header">
+            <h2>নির্বাচনি পরীক্ষা-২০২৬</h2>
+            <h3>শ্রেণি : দাখিল দশম</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin: 2px 0;">
+                <div style="width: 120px;"></div>
+                <h4 style="margin: 0;">ইসলামের ইতিহাস</h4>
+                <div style="font-size: 12.5px; font-weight: bold;">
+                    বিষয় কোড : <span class="subject-code-box">1|0|9</span>
+                </div>
+            </div>
+            <div class="meta-info">
+                <div>সময় : ২ ঘণ্টা ৩০ মিনিট</div>
+                <div>সৃজনশীল প্রশ্ন ও সংক্ষিপ্ত প্রশ্ন</div>
+                <div>পূর্ণমান : ৫০ + ২০ = ৭০</div>
+            </div>
+            <div class="instruction-box">
+                <strong>দ্রষ্টব্য :</strong> ডান পাশের সংখ্যা প্রশ্নের পূর্ণমান জ্ঞাপক। প্রদত্ত উদ্দীপকগুলো মনোযোগসহকারে পড় এবং প্রত্যেক অধ্যায় থেকে ন্যূনতম ১টি করে মোট ৫টি প্রশ্নের উত্তর দাও। ৯নং প্রশ্নের উত্তর দেওয়া বাধ্যতামূলক। ১০ × ৫ = ৫০
+            </div>
+            <div class="section-title">প্রথম অধ্যায়</div>
+        </div>
+
+        <!-- CQ 1 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ১। আমাদের সমাজে একটা প্রবাদ আছে— তেলে মাথায় তেল দেওয়া। কিন্তু শরিফউদ্দিন সাহেব এর ব্যতিক্রম। ময়মনসিংহ বসবাস করার সময় তিনি তার এলাকায় অসহায় দরিদ্র ও অত্যাচারিত মানুষের অবস্থা প্রত্যক্ষ করেন। চাকরি থেকে অবসরের পর তিনি ‘ক’ নামে একটি সেবাূলক সংগঠন গড়ে তোলেন। তার এই মহৎ কর্মকাকে অনেকে এগিয়ে আসেন। আমাদের পবিত্র ইসলাম ধর্মেও এরূপ মানব কল্যাণধর্মী কাজ করার ক্ষেত্রে বিশেষ তাগিদ রয়েছে।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. মহানবি (স)-এর প্রতিষ্ঠিত সংগঠনটির নাম কী?</span><span>১</span></div>
+                <div class="cq-q"><span>খ. মহানবি (স)-এর প্রতিষ্ঠিত সংগঠনটির উদ্দেশ্যাবলী কী ছিল?</span><span>২</span></div>
+                <div class="cq-q"><span>গ. ‘শরিফউদ্দিন সাহেব’ ‘ক’ নামের সংগঠনটি গড়ে তুলতে অনুপ্রাণিত হয়েছিলেন কেন?</span><span>৩</span></div>
+                <div class="cq-q"><span>ঘ. মহানবি (স)-এর প্রতিষ্ঠিত সংগঠনটির মাধ্যমে কীভাবে তিনি আরবের মানুষের কাছে পরিচিতি লাভের সুযোগ পেয়েছেন বলে তুমি মনে কর?— বিশ্লেষণ কর।</span><span>৪</span></div>
+            </div>
+        </div>
+
+        <!-- CQ 2 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ২। সিফাত ও সাদমান মুহাম্মাদ (স)-এর জীবন ও কর্ম নিয়ে আলোচনা করছিল। সিফাত বলল, ‘হযরত মুহাম্মদ (স) মক্কার বিখ্যাত কুরাইশ বংশে জন্মগ্রহণ করেন। শৈশব থেকেই তিনি খুব চিন্তাশীল ছিলেন। হাজরে আসওয়াদ স্থাপনে তাঁর চিন্তাশীলতার প্রমাণ পাওয়া যায়। সকলে তাঁকে ‘আল আমিন’ ডাকত। মানুষের দুঃখ-দুর্দশা লাঘবের জন্য তিনি একটি কমিটি গঠন করেছিলেন। ২৫ বছর বয়সে তিনি বিবি খাদিজা (রা)-কে বিবাহ করেন। সাদমান বলল, তাহলে আমরাও তো আমাদের সমাজে প্রচলিত সমস্যাগুলি দূর করার জন্য একটি ‘কমিটি বা সংগঠন’ গড়ে তুলতে পারি।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. কারা কুরাইশ নামে খ্যাত?</span><span>১</span></div>
+                <div class="cq-q"><span>খ. হযরত (স)-কে কেন ‘আল আমিন’ বলে ডাকত?</span><span>২</span></div>
+                <div class="cq-q"><span>গ. সমাজে প্রচলিত সমস্যাগুলি দূর করার জন্য সাদমান যে সংগঠনটি গড়ে তোলার কথা ভাবছে তার উদ্দেশ্যাবলী কী হতে পারে তা হযরত (স)-এর গঠিত সংগঠনের আলোকে তুলে ধর।</span><span>৩</span></div>
+                <div class="cq-q"><span>ঘ. ‘হাজরে আসওয়াদ’ স্থাপন হযরত মুহাম্মদ (স)-এর গভীর চিন্তাশীলতার প্রকাশ—প্রমাণ কর।</span><span>৪</span></div>
+            </div>
+        </div>
+
+        <div class="section-title">দ্বিতীয় অধ্যায়</div>
+
+        <!-- CQ 3 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ৩। খালেক ও তারেক দুই বন্ধু তেত্রিশে ধর্মীয় আলোচনা উপভোগ করছিল। জনৈক आलोचक মহানবি (স)-এর বিভিন্ন কার্যাবলি সম্পর্কে আলোচনা করছিলেন। এক পর্যায়ে তিনি বলছিলেন, মহানবি (স)-এর হিজরতের পূর্বে মদিনার সামাজিক ও রাজনৈতিক অবস্থা খুবই শোচনীয় ছিল। বিভিন্ন গোত্রে গোত্রে কলহ ছিল। সা¤প্রদায়িক সম্প্রীতির অভাব ছিল। কিন্তু মহানবি (স) সংহতি প্রতিষ্ঠার লক্ষ্যে মদিনা সনদ প্রণয়ন করেন। নবজাত ইসলামি রাষ্ট্র প্রতিষ্ঠায় মহানবি (স) সনদে যুগোপযোগী কিছু বিষয়ের অবতারণা করেন।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. পৃথিবীর ইতিহাসে প্রথম লিখিত সংবিধান কোনটি?</span><span>১</span></div>
+                <div class="cq-q"><span>খ. হিজরত বলতে কী বুঝি? বর্ণনা দাও।</span><span>২</span></div>
+                <div class="cq-q"><span>গ. মদিনা সনদ থেকে খালেক ও তারেকের কী শিক্ষা রয়েছে? —ব্যাখ্যা কর।</span><span>৩</span></div>
+                <div class="cq-q"><span>ঘ. মদিনার বিভিন্ন গোত্রের মধ্যে সংহতি প্রতিষ্ঠায় মদিনা সনদ কতটুক কার্যকর ছিল তুমি মনে কর? —ব্যাখ্যা কর।</span><span>৪</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="page" id="page-2">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="page-num-top">ii</div>
+
+        <div class="q-block">
+            <!-- CQ 4 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৪। আমার এ ঘর ভাঙিয়া যেবা<br>
+                    আমি বাধি তার ঘর,<br>
+                    আপন করিতে কাঁদিয়া বেড়াই<br>
+                    যে মোরে করেছে পর
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. মুহাম্মদ (স)-এর সময়ে ছোট বড় কতগুলো যুদ্ধ সংঘটিত হয়?</span><span>১</span></div>
+                    <div class="cq-q"><span>খ. কুরাইশরা কেন মুহাম্মদ (স)-কে বয়কট করেছিল? ব্যাখ্যা কর।</span><span>২</span></div>
+                    <div class="cq-q"><span>গ. উদ্দীপকে বর্ণিত কবিতার লাইনগুলো কিভাবে রাসুল (স)-এর মক্কা বিজয়ের সাথে সাদৃশ্যপূর্ণ—ব্যাখ্যা কর।</span><span>৩</span></div>
+                    <div class="cq-q"><span>ঘ. রাসুল (স)-এর অনুরূপ কর্ম ইসলাম প্রচার ও প্রসারে অনন্য ভূমিকা পালন করেছে—বিশ্লেষণ কর।</span><span>৪</span></div>
+                </div>
+            </div>
+
+            <div class="section-title">তৃতীয় অধ্যায়</div>
+
+            <!-- CQ 5 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৫। জনাব হাসিব ক্ষমতায় অধিষ্ঠিত হয়ে রাজ্যে শান্তি-শৃঙ্খলা প্রতিষ্ঠার জন্য পূর্বের শাসকের নিযুক্ত প্রাদেশিক গভর্নরদের বরখাস্ত করেন। হাবিল নামক গভর্নর ব্যতীত অন্যান্য গভর্নরগণ তাঁর নির্দেশের প্রতি সম্মান দেখান। তাছাড়া হাবিল সাহেব পূর্বকার শাসকের সময়ে অনেক সরকারি সম্পত্তির মালিক ছিলেন। হাবিল সাহেবের সরকারি সম্পত্তি বাজেয়াপ্ত করলে উভয়ের মধ্যে সংঘর্ষ অনিবার্য হয়ে ওঠে। পরিশেষে উভয়ের মধ্যে একটি যুদ্ধ সংঘটিত হয়।
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. ‘সাইফুল্লাহ’ কার উপাধি?</span><span>১</span></div>
+                    <div class="cq-q"><span>খ. খারেজী সম্প্রদায় বলতে কী বুঝ?</span><span>২</span></div>
+                    <div class="cq-q"><span>গ. উদ্দীপকের সংঘর্ষের ধারা তোমার পাঠ্যপুস্তকের কোন সংঘর্ষের প্রতি ইঙ্গিত করা হয়েছে? ব্যাখ্যা কর।</span><span>৩</span></div>
+                    <div class="cq-q"><span>ঘ. উক্ত সংঘর্ষে খলিফার ব্যর্থতার ফলে ইসলামে গণতন্ত্রের পরিবর্তে রাজতন্ত্রের সূচনা হয়—উত্তরের স্বপক্ষে তোমার মতামত দাও।</span><span>৪</span></div>
+                </div>
+            </div>
+
+            <div class="section-title">চতুর্থ অধ্যায়</div>
+
+            <!-- CQ 6 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৬। বিভাগীয় পর্যায়ের একটি গুরুত্বপূর্ণ মাদ্রাসার বেশ কয়েকজন শিক্ষক নিয়োগের বিজ্ঞপ্তি দেওয়া হলে অনেকেই আবেদন করেন। নির্ধারিত দিনে যথাযথ কর্তৃপক্ষের উপস্থিতিতে বিধি অনুযায়ী নিয়োগ পরীক্ষা গ্রহণ করা হয়। ফলাফল প্রকাশিত হলে দেখা যায়, কয়েকজন শিক্ষক হিসেবে নিয়োগ পেয়েছেন, যারা গভর্নিং বডির সভাপতির ঘনিষ্ঠজন। এতে সভাপতির বিরুদ্ধে আপত্তি উঠে। অপরদিকে একই মাদ্রাসার যোগ্য অধ্যক্ষ দীর্ঘদিন ধরে সুনামের সাথে দায়িত্ব পালন করে যাচ্ছিলেন। হঠাৎ করে কিছু শিক্ষক ঐক্যবদ্ধ হয়ে বলতে শুরু করে, অধ্যক্ষ সাহেব মাদ্রাসা ফান্ড থেকে অবৈধভাবে টাকা নিয়ে নিজের কাজে ব্যবহার করেছেন।
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. বীরে রুমা কূপটির মালিক কে?</span><span>১</span></div>
+                    <div class="cq-q"><span>খ. ‘বাইয়াতুর রেজদয়ান’ কেন সংঘটিত হয়েছিল? ব্যাখ্যা কর।</span><span>২</span></div>
+                    <div class="cq-q"><span>গ. উদ্দীপকের সভাপতির বিরুদ্ধে উঠা আপত্তির সাথে খোলাফায়ে রাশেদীনের কোন খলিফার ঘটনার মিল পাওয়া যায়? ব্যাখ্যা কর।</span><span>৩</span></div>
+                    <div class="cq-q"><span>ঘ. উদ্দীপকের অধ্যক্ষের ঘটনাটির সাথে উক্ত খলিফার “বায়তুল মালের অর্থ অপচয়” বিষয়টির সামঞ্জস্য রয়েছে—তোমার মতামতসহ পাঠ্যবইয়ের আলোকে বিশ্লেষণ কর।</span><span>৪</span></div>
+                </div>
+            </div>
+
+            <!-- CQ 7 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৭। সপ্তম শতাব্দী সেনাপতি ইয়াছীন দুর্বার গতিতে মধুপুর রাজ্যে অভিযান চালিয়ে রাজা বিজয় সিংহকে পরাজিত করে তার রাজধানী দখল করে নেন এবং যুদ্ধক্ষেত্রেই রাজার মৃত্যু হয়। এরপর সেনাপতি ইয়াছীন আরও কিছু নতুন অঞ্চল দখল করে সেখানে শাসন প্রতিষ্ঠা করেন।
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. মুসলমানরা সিন্ধু বিজয় করে কত খ্রিস্টাব্দে?</span><span>১</span></div>
+                    <div class="cq-q"><span>খ. হাজ্জাজ বিন ইউসুফ কেন সিন্ধু অভিযান করেছিলেন তার প্রধান কারণটি উল্লেখ কর।</span><span>২</span></div>
+                    <div class="cq-q"><span>গ. উদ্দীপকে উল্লিখিত সেনাপতির সাথে মুসলিম সেনাপতির কর্মকাণ্ডের সাদৃশ্য রয়েছে? ব্যাখ্যা কর।</span><span>৩</span></div>
+                    <div class="cq-q"><span>ঘ. ইতিহাসের আলোকে উক্ত মুসলিম সেনাপতির কৃতিত্ব মূল্যায়ন কর।</span><span>৪</span></div>
+                </div>
+            </div>
+
+            <!-- CQ 8 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৮। বর্তমানে আমাদের পার্বত্য ও অনগ্রসর এলাকায় অনেক জনগোষ্ঠীর ধর্মান্তরিত হচ্ছে। এমন বিষয়টির অবতারণা করে শ্রেণishikok শ্রেণিতে বললেন, প্রাচীনকালে মুসলিম অভিযಾನের প্রাক্কালে ভারতে এ ধরনের অবস্থার সৃষ্টি হয়েছিল। উচ্চবর্ণের হিন্দুদের নিপীড়নের ফলে নিম্নবর্ণের হিন্দুরা ধর্মান্তরিত হতে থাকে। সমাজে এমন অবস্থার প্রেক্ষিতে মুহাম্মদ ঘোরীর ভারত অভিযানে ব্যাপক সফলতা বয়ে আনে। ভারতের মুসলিম সাম্রাজ্যের প্রতিষ্ঠার পথকে সুগম করে।
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. মুহাম্মদ ঘোরী ভারতে প্রথম কবে খ্রিস্টাব্দে অভিযান পরিচালনা করেন?</span><span>১</span></div>
+                    <div class="cq-q"><span>খ. প্রাচীনকালে ভারতে মুসলিম অভিযಾನের প্রাক্কালে হিন্দু সমাজে কেন ঐক্য ও সংহতির অভাব ছিল?</span><span>২</span></div>
+                    <div class="cq-q"><span>গ. বর্তমান বাংলাদেশের পার্বত্য ও অনগ্রসর এলাকায় দরিদ্র জনগোষ্ঠীর সাথে ভারতে মুসলিম অভিযানের প্রাক্কালে নিম্নবর্ণের হিন্দুদের ধর্মান্তরিত হওয়ার বিষয়টির যোগসূত্র স্থাপন কর।</span><span>৩</span></div>
+                    <div class="cq-q"><span>ঘ. “ভারতে মুসলিম শাসন প্রতিষ্ঠায় মুহাম্মদ ঘোরীর কৃতিত্ব মূল্যায়ন কর।</span><span>৪</span></div>
+                </div>
+            </div>
+
+            <div class="section-title" style="margin-top: 10px;">সংক্ষিপ্ত-উত্তর প্রশ্ন</div>
+            <div style="text-align: center; font-size: 12px; font-weight: bold; margin-bottom: 6px;">[যেকোনো ১০টি প্রশ্নের উত্তর দাও : ২ × ১০ = ২০]</div>
+
+            <!-- Short Questions -->
+            <div class="q-block">
+                <ul class="sub-list">
+                    <li><span class="label">৯. ক. ইসলামের প্রাককেন্দ বলতে কী বুঝায়?</span></li>
+                    <li><span class="label">খ. অন্ধকার যুগের ব্যক্তিকাল কত ছিল?</span></li>
+                    <li><span class="label">গ. জাহেলিয়া যুগের কবিতার বিষয়বস্তু কী ছিল? ব্যাখ্যা কর।</span></li>
+                    <li><span class="label">ঘ. হিলফ উল-ফুজুল বলতে কী বুঝ?</span></li>
+                    <li><span class="label">ঙ. নবুয়ত বলতে কী বুঝ?</span></li>
+                    <li><span class="label">চ. আব্দুল্লাহ ইবনে উবাই কে ছিল? তার কর্মকাণ্ড ব্যাখ্যা কর।</span></li>
+                    <li><span class="label">ছ. মদিনা সনদের ৫টি ধারা লেখ।</span></li>
+                    <li><span class="label">জ. খন্দকের যুদ্ধের কারণটি ব্যাখ্যা কর।</span></li>
+                    <li><span class="label">ঝ. খোলাফায়ে রাশেদীন বলতে কী বুঝ?</span></li>
+                    <li><span class="label">ঞ. শিয়া সম্প্রদায়ের পরিচয় দাও।</span></li>
+                    <li><span class="label">ট. মুসলমানদের ভারত অভিযানের অন্যতম একটি কারণ বর্ণনা কর।</span></li>
+                    <li><span class="label">ঠ. আরবদের সিন্ধু জয়ের ধর্মীয় ফলাফল ব্যাখ্যা কর।</span></li>
+                    <li><span class="label">ড. সুলতান মাহমুদের ভারত অভিযানে অর্থনৈতিক কারণ ব্যাখ্যা কর।</span></li>
+                    <li><span class="label">ঢ. কেন গজনী বংশের পতন ঘটে?</span></li>
+                    <li><span class="label">ণ. বাংলায় ইসলামের আগমন সম্পর্কে কী জান লেখা।</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Drawing & Annotation Script ================= -->
+    <script>
+        let isToolbarOpen = false;
+        let isSettingsOpen = false;
+        let currentTool = 'pen';
+        let activeCanvas = null;
+
+        let penColor = '#FF3B30';
+        let penSize = 3;
+        let highlighterColor = 'rgba(253, 224, 71, 0.35)';
+        let highlighterSize = 22;
+        let eraserSize = 25;
+
+        const penColors = ['#FF3B30', '#007AFF', '#111827', '#10B981'];
+        const highlighterColors = [
+            'rgba(253, 224, 71, 0.35)',
+            'rgba(134, 239, 172, 0.35)',
+            'rgba(253, 186, 116, 0.35)',
+            'rgba(244, 114, 182, 0.30)'
+        ];
+
+        const history = new Map();
+
+        function refreshCanvases() {
+            document.querySelectorAll('.page').forEach(page => {
+                const canvas = page.querySelector('.draw-canvas');
+                if (!canvas) return;
+
+                const w = page.clientWidth;
+                const h = page.clientHeight;
+                if (canvas.width !== w || canvas.height !== h) {
+                    canvas.width = w;
+                    canvas.height = h;
+                }
+
+                if (!history.has(canvas)) {
+                    history.set(canvas, { undo: [], redo: [] });
+                    saveCanvasState(canvas);
+                    attachCanvasDrawEvents(canvas);
+                }
+            });
+        }
+
+        refreshCanvases();
+        window.addEventListener('load', refreshCanvases);
+        window.addEventListener('resize', refreshCanvases);
+
+        function toggleToolbar() {
+            isToolbarOpen = !isToolbarOpen;
+            const toolbar = document.getElementById('toolbar');
+            
+            if (isToolbarOpen) {
+                refreshCanvases();
+                toolbar.classList.add('open');
+            } else {
+                toolbar.classList.remove('open');
+                closeSettings();
+            }
+
+            document.querySelectorAll('.draw-canvas').forEach(c => {
+                c.style.pointerEvents = isToolbarOpen ? 'auto' : 'none';
+            });
+        }
+
+        function selectTool(tool) {
+            currentTool = tool;
+            document.getElementById('btn-pen').classList.toggle('active', tool === 'pen');
+            document.getElementById('btn-highlighter').classList.toggle('active', tool === 'highlighter');
+            document.getElementById('btn-eraser').classList.toggle('active', tool === 'eraser');
+            
+            if (isSettingsOpen) {
+                updateSettingsUI();
+            }
+        }
+
+        function toggleSettings() {
+            isSettingsOpen = !isSettingsOpen;
+            const panel = document.getElementById('settingsPanel');
+            if (isSettingsOpen) {
+                panel.classList.add('open');
+                updateSettingsUI();
+            } else {
+                panel.classList.remove('open');
+            }
+        }
+
+        function closeSettings() {
+            isSettingsOpen = false;
+            document.getElementById('settingsPanel').classList.remove('open');
+        }
+
+        function updateSettingsUI() {
+            const title = document.getElementById('panelTitle');
+            const colorList = document.getElementById('colorList');
+            const slider = document.getElementById('sizeSlider');
+            const previewDot = document.getElementById('previewDot');
+
+            colorList.innerHTML = '';
+
+            if (currentTool === 'pen') {
+                title.innerText = 'Pen Color & Size';
+                colorList.style.display = 'flex';
+                slider.min = 1;
+                slider.max = 14;
+                slider.value = penSize;
+                previewDot.style.background = penColor;
+                previewDot.style.width = penSize * 2 + 'px';
+                previewDot.style.height = penSize * 2 + 'px';
+
+                penColors.forEach(c => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'color-bubble' + (c === penColor ? ' selected' : '');
+                    bubble.style.background = c;
+                    bubble.onclick = () => {
+                        penColor = c;
+                        document.getElementById('pen-indicator').style.background = c;
+                        updateSettingsUI();
+                    };
+                    colorList.appendChild(bubble);
+                });
+            } else if (currentTool === 'highlighter') {
+                title.innerText = 'Highlighter Color & Size';
+                colorList.style.display = 'flex';
+                slider.min = 12;
+                slider.max = 35;
+                slider.value = highlighterSize;
+                previewDot.style.background = highlighterColor;
+                previewDot.style.width = Math.min(26, highlighterSize) + 'px';
+                previewDot.style.height = Math.min(26, highlighterSize) + 'px';
+
+                highlighterColors.forEach(c => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'color-bubble' + (c === highlighterColor ? ' selected' : '');
+                    bubble.style.background = c;
+                    bubble.onclick = () => {
+                        highlighterColor = c;
+                        document.getElementById('highlighter-indicator').style.background = c;
+                        updateSettingsUI();
+                    };
+                    colorList.appendChild(bubble);
+                });
+            } else {
+                title.innerText = 'Eraser Size';
+                colorList.style.display = 'none';
+                slider.min = 8;
+                slider.max = 50;
+                slider.value = eraserSize;
+                previewDot.style.background = '#94A3B8';
+                previewDot.style.width = Math.min(28, eraserSize / 1.5) + 'px';
+                previewDot.style.height = Math.min(28, eraserSize / 1.5) + 'px';
+            }
+        }
+
+        function changeSize(val) {
+            val = parseInt(val);
+            const previewDot = document.getElementById('previewDot');
+            if (currentTool === 'pen') {
+                penSize = val;
+                previewDot.style.width = val * 2 + 'px';
+                previewDot.style.height = val * 2 + 'px';
+            } else if (currentTool === 'highlighter') {
+                highlighterSize = val;
+                previewDot.style.width = Math.min(26, val) + 'px';
+                previewDot.style.height = Math.min(26, val) + 'px';
+            } else {
+                eraserSize = val;
+                previewDot.style.width = Math.min(28, val / 1.5) + 'px';
+                previewDot.style.height = Math.min(28, val / 1.5) + 'px';
+            }
+        }
+
+        function saveCanvasState(canvas) {
+            const ctx = canvas.getContext('2d');
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const h = history.get(canvas);
+            if (h) {
+                h.undo.push(data);
+                if (h.undo.length > 20) h.undo.shift();
+                h.redo = [];
+            }
+        }
+
+        function undo() {
+            if (!activeCanvas) activeCanvas = document.querySelector('.draw-canvas');
+            const h = history.get(activeCanvas);
+            if (h && h.undo.length > 1) {
+                const current = h.undo.pop();
+                h.redo.push(current);
+                const prev = h.undo[h.undo.length - 1];
+                activeCanvas.getContext('2d').putImageData(prev, 0, 0);
+            }
+        }
+
+        function redo() {
+            if (!activeCanvas) activeCanvas = document.querySelector('.draw-canvas');
+            const h = history.get(activeCanvas);
+            if (h && h.redo.length > 0) {
+                const next = h.redo.pop();
+                h.undo.push(next);
+                activeCanvas.getContext('2d').putImageData(next, 0, 0);
+            }
+        }
+
+        function attachCanvasDrawEvents(canvas) {
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+            let lastX = 0, lastY = 0;
+
+            function getCoords(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                return {
+                    x: (clientX - rect.left) * scaleX,
+                    y: (clientY - rect.top) * scaleY
+                };
+            }
+
+            function start(e) {
+                if (!isToolbarOpen) return;
+                activeCanvas = canvas;
+                isDrawing = true;
+                const pos = getCoords(e);
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function move(e) {
+                if (!isDrawing || !isToolbarOpen) return;
+                if (e.cancelable) e.preventDefault();
+
+                const pos = getCoords(e);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                if (currentTool === 'eraser') {
+                    ctx.globalCompositeOperation = 'destination-out';
+                    ctx.lineWidth = eraserSize;
+                } else if (currentTool === 'highlighter') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = highlighterColor;
+                    ctx.lineWidth = highlighterSize;
+                } else {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = penColor;
+                    ctx.lineWidth = penSize;
+                }
+
+                ctx.stroke();
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function end() {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveCanvasState(canvas);
+                }
+            }
+
+            canvas.addEventListener('mousedown', start);
+            canvas.addEventListener('mousemove', move);
+            canvas.addEventListener('mouseup', end);
+            canvas.addEventListener('mouseleave', end);
+
+            canvas.addEventListener('touchstart', start, { passive: false });
+            canvas.addEventListener('touchmove', move, { passive: false });
+            canvas.addEventListener('touchend', end);
+        }
+
+        const dragContainer = document.getElementById('draggableToolbar');
+        const dragHandle = document.getElementById('dragHandle');
+
+        let isDragging = false;
+        let startClientX = 0, startClientY = 0;
+        let startBottom = 0, startRight = 0;
+
+        function startDrag(e) {
+            const evt = e.touches ? e.touches[0] : e;
+            isDragging = true;
+            startClientX = evt.clientX;
+            startClientY = evt.clientY;
+
+            const rect = dragContainer.getBoundingClientRect();
+            startBottom = window.innerHeight - rect.bottom;
+            startRight = window.innerWidth - rect.right;
+
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function onDrag(e) {
+            if (!isDragging) return;
+            const evt = e.touches ? e.touches[0] : e;
+            const dx = evt.clientX - startClientX;
+            const dy = evt.clientY - startClientY;
+
+            let newBottom = startBottom - dy;
+            let newRight = startRight - dx;
+
+            newBottom = Math.max(15, Math.min(newBottom, window.innerHeight - 380));
+            newRight = Math.max(15, Math.min(newRight, window.innerWidth - 75));
+
+            dragContainer.style.bottom = newBottom + 'px';
+            dragContainer.style.right = newRight + 'px';
+            dragContainer.style.top = 'auto';
+            dragContainer.style.left = 'auto';
+
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function endDrag() {
+            isDragging = false;
+        }
+
+        dragHandle.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', onDrag);
+        window.addEventListener('mouseup', endDrag);
+
+        dragHandle.addEventListener('touchstart', startDrag, { passive: false });
+        window.addEventListener('touchmove', onDrag, { passive: false });
+        window.addEventListener('touchend', endDrag);
+    </script>
+</body>
+</html>
