@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Meta Tags for Facebook, Messenger, and Social Share -->
+    <title>নির্বাচনি পরীক্ষা-২০২৬ | পদার্থবিজ্ঞান (দাখিল দশম শ্রেণি) - উত্তরসহ বহুনির্বাচনি অভীক্ষা</title>
+    <meta name="description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর পদার্থবিজ্ঞান বিষয়ের বহুনির্বাচনি অভীক্ষা (MCQ) এবং সঠিক উত্তর হাইলাইটসহ সম্পূর্ণ প্রশ্নপত্র।">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:title" content="নির্বাচনি পরীক্ষা-২০২৬ | পদার্থবিজ্ঞান (দাখিল দশম শ্রেণি)">
+    <meta property="og:description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর পদার্থবিজ্ঞান বিষয়ের বহুনির্বাচনি প্রশ্ন ও সঠিক উত্তরগুলো দেখে নিন।">
+    <meta property="og:type" content="website">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e5e7eb;
+            font-family: Arial, "Segoe UI", "SolaimanLipi", Tahoma, sans-serif;
+            color: #000;
+            font-size: 13px;
+            line-height: 1.45;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 8px 100px 8px;
+            overflow-x: hidden;
+        }
+
+        .page {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .draw-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            pointer-events: none;
+            touch-action: none;
+        }
+
+        .annotation-container {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            z-index: 99999;
+            direction: ltr;
+            user-select: none;
+            touch-action: none;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            width: 54px;
+            height: 54px;
+            background: #EDE8FE;
+            border-radius: 16px;
+            border: 2px solid #C4B5FD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(109, 40, 217, 0.35);
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
+        }
+
+        .toggle-btn:active {
+            transform: scale(0.92);
+        }
+
+        .vertical-toolbar {
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 8px 6px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+            border: 1px solid #E2E8F0;
+            animation: popUp 0.18s ease forwards;
+        }
+
+        .vertical-toolbar.open {
+            display: flex;
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: translateY(12px) scale(0.92); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .drag-handle {
+            width: 36px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            color: #94A3B8;
+            font-size: 16px;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .tool-item {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tool-item.active {
+            background: #E0EDFF;
+        }
+
+        .tool-item svg {
+            width: 22px;
+            height: 22px;
+            stroke: #1E293B;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .color-indicator {
+            width: 18px;
+            height: 4px;
+            border-radius: 10px;
+            margin-top: 2px;
+        }
+
+        .settings-panel {
+            position: absolute;
+            right: 64px;
+            bottom: 0;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 12px 14px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+            border: 1px solid #E2E8F0;
+            width: 210px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            z-index: 105;
+        }
+
+        .settings-panel.open {
+            display: flex;
+        }
+
+        .panel-header {
+            font-weight: bold;
+            color: #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #F1F5F9;
+            padding-bottom: 4px;
+        }
+
+        .color-list {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .color-bubble {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        .color-bubble.selected {
+            outline: 2.5px solid #2563eb;
+            transform: scale(1.15);
+        }
+
+        .size-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .size-slider {
+            flex-grow: 1;
+            height: 6px;
+            accent-color: #2563eb;
+            cursor: pointer;
+        }
+
+        .preview-dot-container {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F8FAFC;
+            border-radius: 50%;
+            border: 1px solid #E2E8F0;
+        }
+
+        .preview-dot {
+            background: #FF3B30;
+            border-radius: 50%;
+            transition: all 0.1s ease;
+        }
+
+        .exam-header {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .exam-header h2 {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .exam-header h3 {
+            font-size: 14.5px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .exam-header h4 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12.5px;
+            font-weight: bold;
+            margin-top: 3px;
+        }
+
+        .subject-code-box {
+            border: 1px solid #000;
+            padding: 1px 6px;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        .instruction-box {
+            font-size: 11px;
+            border: 1px solid #000;
+            padding: 4px 6px;
+            margin: 5px 0 8px 0;
+            text-align: justify;
+        }
+
+        .page-num-top {
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .q-block {
+            margin-bottom: 6px;
+        }
+
+        .q-item {
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+
+        .q-question {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .options-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            margin-left: 12px;
+        }
+
+        .stimulus-box {
+            border: 1px dashed #000;
+            padding: 4px 6px;
+            margin: 4px 0;
+            font-size: 11.5px;
+            text-align: center;
+            background: #fdfdfd;
+        }
+
+        .correct-ans {
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+            border: 1px dashed #34d399;
+        }
+
+        @media (min-width: 820px) {
+            body {
+                padding: 20px 0 100px 0;
+            }
+            .page {
+                width: 210mm;
+                min-height: 297mm;
+                padding: 14mm 16mm;
+                border-radius: 0;
+            }
+        }
+
+        @media print {
+            body {
+                background: transparent;
+                padding: 0;
+            }
+            .annotation-container, .settings-panel {
+                display: none !important;
+            }
+            .page {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 12mm 14mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= Draggable Floating Annotation Toolbar ================= -->
+    <div class="annotation-container" id="draggableToolbar">
+        <button class="toggle-btn" id="toggleBtn" onclick="toggleToolbar()" title="Open/Close Toolbar">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 18.5 3 20l1.5-4L16.5 3.5z"></path>
+                <path d="M4 8c2-2 4 0 5-1s2-3 4-2"></path>
+                <path d="M14 17c1 2 3 3 5 1"></path>
+            </svg>
+        </button>
+
+        <div class="vertical-toolbar" id="toolbar">
+            <div class="drag-handle" id="dragHandle" title="Drag to move toolbar">
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="#94A3B8">
+                    <circle cx="4" cy="3" r="1.5"/><circle cx="10" cy="3" r="1.5"/><circle cx="16" cy="3" r="1.5"/>
+                    <circle cx="4" cy="9" r="1.5"/><circle cx="10" cy="9" r="1.5"/><circle cx="16" cy="9" r="1.5"/>
+                </svg>
+            </div>
+
+            <button class="tool-item active" id="btn-pen" onclick="selectTool('pen')" title="Pen">
+                <svg viewBox="0 0 24 24" style="fill: #1E293B;">
+                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+                <span class="color-indicator" id="pen-indicator" style="background: #FF3B30;"></span>
+            </button>
+
+            <button class="tool-item" id="btn-highlighter" onclick="selectTool('highlighter')" title="Highlighter">
+                <svg viewBox="0 0 24 24">
+                    <path d="m14 4 6 6-9 9H5v-6l9-9zM18 10l-4-4"/>
+                    <path d="M3 21h6"/>
+                </svg>
+                <span class="color-indicator" id="highlighter-indicator" style="background: #FDE047;"></span>
+            </button>
+
+            <button class="tool-item" id="btn-eraser" onclick="selectTool('eraser')" title="Eraser">
+                <svg viewBox="0 0 24 24">
+                    <path d="m18 13-6-6-7.5 7.5a2.12 2.12 0 0 0 0 3L7 20h12v-2l-4-4"/>
+                    <line x1="7" y1="20" x2="17" y2="20"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="undo()" title="Undo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 14 4 9l5-5"/>
+                    <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="redo()" title="Redo">
+                <svg viewBox="0 0 24 24">
+                    <path d="m15 14 5-5-5-5"/>
+                    <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="toggleSettings()" title="Settings" style="background: #F1F5F9;">
+                <svg viewBox="0 0 24 24" style="stroke: #2563eb;">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="settings-panel" id="settingsPanel">
+            <div class="panel-header">
+                <span id="panelTitle">Color & Size</span>
+                <span style="cursor:pointer; font-size:16px; padding:2px 6px;" onclick="closeSettings()">✕</span>
+            </div>
+            
+            <div class="color-list" id="colorList"></div>
+
+            <div style="font-size:12px; color:#64748B;">Thickness:</div>
+            <div class="size-box">
+                <input type="range" class="size-slider" id="sizeSlider" min="1" max="40" value="3" oninput="changeSize(this.value)">
+                <div class="preview-dot-container">
+                    <div class="preview-dot" id="previewDot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="page" id="page-1">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="exam-header">
+            <h2>নির্বাচনি পরীক্ষা-২০২৬</h2>
+            <h3>দাখিল দশম শ্রেণি</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin: 2px 0;">
+                <div style="width: 120px;"></div>
+                <h4 style="margin: 0;">বিষয় : পদার্থবিজ্ঞান</h4>
+                <div style="font-size: 12.5px; font-weight: bold;">
+                    বিষয় কোড : <span class="subject-code-box">1|3|0</span>
+                </div>
+            </div>
+            <div class="meta-info">
+                <div>সময় : ২৫ মিনিট</div>
+                <div>বহুনির্বাচনি অভীক্ষা</div>
+                <div>মান : ২৫</div>
+            </div>
+            <div style="text-align: left; font-size: 12px; margin-top: 3px;">
+                নাম : ............................................................ রোল নং : ............................
+            </div>
+            <div class="instruction-box">
+                <strong>দ্রষ্টব্য :</strong> সরবরাহকৃত বহুনির্বাচনি অভীক্ষার উত্তরপত্রে প্রশ্নের ক্রমিক নম্বরের বিপরীতে প্রদত্ত বর্ণসংবলিত বৃত্তসমূহ হতে সঠিক/সর্বোউৎকৃষ্ট উত্তরের (●) বৃত্তটি বল পয়েন্ট কলম দ্বারা সম্পূর্ণ ভরাট কর। প্রতি প্রশ্নের মান ১। সকল প্রশ্নের উত্তর দিতে হবে।
+            </div>
+        </div>
+
+        <!-- Questions 1 to 10 -->
+        <div class="q-block">
+            <!-- Q1 -->
+            <div class="q-item">
+                <div class="q-question">১. গোলকের আয়তন নির্ণয়ের সূত্র কোনটি?</div>
+                <div class="options-row">
+                    <span>(ক) πr²</span>
+                    <span>(খ) 2πr</span>
+                    <span><span class="correct-ans">(গ) ⁴⁄₃πr³</span></span>
+                    <span>(ঘ) πr²l</span>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="q-item">
+                <div class="q-question">২. C স্কেলের ভার্নিয়ার ধ্রুবকের মান কত?</div>
+                <div class="options-row">
+                    <span>(ক) 0.005 mm</span>
+                    <span>(খ) 0.001 mm</span>
+                    <span>(গ) 0.01 mm</span>
+                    <span><span class="correct-ans">(ঘ) 0.05 mm</span></span>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="q-item">
+                <div class="q-question">৩. পদার্থবিজ্ঞানের প্রধান উদ্দেশ্য—</div>
+                <div class="options-row">
+                    <span>i. প্রাকৃতিক নিয়মগুলো অনুধাবন করা</span>
+                    <span>ii. প্রকৃতির আবহাওয়ার পূর্বাভাস প্রদান করা</span>
+                    <span>iii. প্রকৃতির রহস্য উদঘাটন করা</span>
+                    <div style="margin-top: 2px; width: 100%;">
+                        <span>নিচের কোনটি সঠিক?</span>
+                        <div class="options-row" style="margin-top: 2px;">
+                            <span>(ক) i ও ii</span>
+                            <span><span class="correct-ans">(খ) i ও iii</span></span>
+                            <span>(গ) ii ও iii</span>
+                            <span>(ঘ) i, ii ও iii</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="q-item">
+                <div class="q-question">৪. 5kg ভরের 1টি বস্তু সমবেগে 10 সেকেন্ডে 40m দূরত্ব অতিক্রম করে। বস্তুটির গতিশক্তি কত?</div>
+                <div class="options-row">
+                    <span>(ক) 10 J</span>
+                    <span><span class="correct-ans">(খ) 40 J</span></span>
+                    <span>(গ) 50 J</span>
+                    <span>(ঘ) 200 J</span>
+                </div>
+            </div>
+
+            <!-- Stimulus for Q 5 & 6 (Graph Image Box) -->
+            <div class="stimulus-box">
+                <strong>উদ্দীপকের আলোকে ৫ ও ৬ নং প্রশ্নের উত্তর দাও :</strong><br>
+                <div style="margin: 6px auto; text-align: center;">
+                    <img src="graph_q5.png" alt="বেগ-সময় গ্রাফ" style="max-width: 240px; height: auto; border: 1px solid #7f8c8d; background: #fff; padding: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; border: 1px dashed #7f8c8d; padding: 15px; font-size: 12px; background: #f8fafc; color: #475569;">
+                        📊 [এখানে বেগ-সময় গ্রাফের চিত্রটি প্রদর্শিত হবে — graph_q5.png]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="q-item">
+                <div class="q-question">৫. BC অংশের ত্বরণের মান কত?</div>
+                <div class="options-row">
+                    <span><span class="correct-ans">(ক) 0 ms⁻²</span></span>
+                    <span>(খ) 1 ms⁻²</span>
+                    <span>(গ) 1.4 ms⁻²</span>
+                    <span>(ঘ) 1.33 ms⁻²</span>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="q-item">
+                <div class="q-question">৬. উপরের উদ্দীপকে—</div>
+                <div class="options-row">
+                    <span>i. AB অংশের ত্বরণ -2 ms⁻²</span>
+                    <span>ii. BC অংশে বেগের পরিবর্তন শূন্য</span>
+                    <span>iii. CD অংশ সুষম ত্বরণ নির্দেশ করে</span>
+                    <div style="margin-top: 2px; width: 100%;">
+                        <span>নিচের কোনটি সঠিক?</span>
+                        <div class="options-row" style="margin-top: 2px;">
+                            <span>(ক) i ও ii</span>
+                            <span>(খ) i ও iii</span>
+                            <span>(গ) ii ও iii</span>
+                            <span><span class="correct-ans">(ঘ) i, ii ও iii</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="q-item">
+                <div class="q-question">৭. থিওরি অব রিলেটিভিটির ক্ষেত্রে শক্তির সমীকরণ কোনটি?</div>
+                <div class="options-row">
+                    <span>(ক) E = mgh</span>
+                    <span>(খ) E = ½mv²</span>
+                    <span>(গ) E = ½kx²</span>
+                    <span><span class="correct-ans">(ঘ) E = mc²</span></span>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="q-item">
+                <div class="q-question">৮. ভূপৃষ্ঠে অভিকর্ষজ ত্বরণের মান—</div>
+                <div class="options-row">
+                    <span>i. পৃথিবীর ভরের সমানুপাতিক</span>
+                    <span>ii. পৃথিবীর ব্যাসার্ধের বর্গের ব্যাস্তানুপাতিক</span>
+                    <span>iii. বিষুব অঞ্চলে সবচেয়ে বেশি</span>
+                    <div style="margin-top: 2px; width: 100%;">
+                        <span>নিচের কোনটি সঠিক?</span>
+                        <div class="options-row" style="margin-top: 2px;">
+                            <span><span class="correct-ans">(ক) i ও ii</span></span>
+                            <span>(খ) i ও iii</span>
+                            <span>(গ) ii ও iii</span>
+                            <span>(ঘ) i, ii ও iii</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q9 -->
+            <div class="q-item">
+                <div class="q-question">৯. নিচের কোনটি অনবায়নযোগ্য শক্তির উৎস?</div>
+                <div class="options-row">
+                    <span>(ক) বায়োমাস</span>
+                    <span><span class="correct-ans">(খ) গ্যাস</span></span>
+                    <span>(গ) জলবিদ্যুৎ</span>
+                    <span>(ঘ) বায়ুশক্তি</span>
+                </div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="q-item">
+                <div class="q-question">১০. 0.5 gm/cc ঘনত্বের একটি বস্তুকে পানিতে ভাসিয়ে দিলে তার কত অংশ ডুবে থাকবে? [পানির ঘনত্ব 1 gm/cc]</div>
+                <div class="options-row">
+                    <span>(ক) 0.5%</span>
+                    <span>(খ) 1%</span>
+                    <span><span class="correct-ans">(গ) 50%</span></span>
+                    <span>(ঘ) 100%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="page" id="page-2">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="page-num-top">ii</div>
+
+        <div class="q-block">
+            <!-- Q11 -->
+            <div class="q-item">
+                <div class="q-question">১১. Nm⁻² একটি হচ্ছে—</div>
+                <div class="options-row">
+                    <span>i. ইয়ংস মডুলাস এর</span>
+                    <span>ii. চাপের</span>
+                    <span>iii. পীড়নের</span>
+                    <div style="margin-top: 2px; width: 100%;">
+                        <span>নিচের কোনটি সঠিক?</span>
+                        <div class="options-row" style="margin-top: 2px;">
+                            <span>(ক) i</span>
+                            <span>(খ) ii</span>
+                            <span>(গ) iii</span>
+                            <span><span class="correct-ans">(ঘ) i, ii ও iii</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q12 -->
+            <div class="q-item">
+                <div class="q-question">১২. তাপধারণ ক্ষমতার একক কোনটি?</div>
+                <div class="options-row">
+                    <span>(ক) Jkg⁻¹K⁻¹</span>
+                    <span>(খ) Jkg⁻¹K</span>
+                    <span><span class="correct-ans">(গ) JK⁻¹</span></span>
+                    <span>(ঘ) JK</span>
+                </div>
+            </div>
+
+            <!-- Q13 -->
+            <div class="q-item">
+                <div class="q-question">১৩. পানির ত্রৈধ বিন্দুর তাপমাত্রার কত ভাগকে এক কেলভিন বলা হয়?</div>
+                <div class="options-row">
+                    <span>(ক) ¹/₂₇₃</span>
+                    <span><span class="correct-ans">(খ) ¹/₂₇₃.₁₆</span></span>
+                    <span>(গ) ¹/₃₇₃</span>
+                    <span>(ঘ) ¹/₃₇₃.₁₆</span>
+                </div>
+            </div>
+
+            <!-- Q14 -->
+            <div class="q-item">
+                <div class="q-question">১৪. শব্দের বেগ কোন মাধ্যমে সবচেয়ে কম?</div>
+                <div class="options-row">
+                    <span>(ক) লোহা</span>
+                    <span>(খ) পানি</span>
+                    <span>(গ) পারদ</span>
+                    <span><span class="correct-ans">(ঘ) বাতাস</span></span>
+                </div>
+            </div>
+
+            <!-- Q15 -->
+            <div class="q-item">
+                <div class="q-question">১৫. শব্দ সঞ্চালনের সময় বাতাসের অণুগুলোর মধ্যে বিদ্যমান থাকে—</div>
+                <div class="options-row">
+                    <span>i. পর্যায়বৃত্ত গতি</span>
+                    <span>ii. ঘূর্ণন গতি</span>
+                    <span>iii. সরল স্পন্দন গতি</span>
+                    <div style="margin-top: 2px; width: 100%;">
+                        <span>নিচের কোনটি সঠিক?</span>
+                        <div class="options-row" style="margin-top: 2px;">
+                            <span>(ক) i ও ii</span>
+                            <span><span class="correct-ans">(খ) i ও iii</span></span>
+                            <span>(গ) ii ও iii</span>
+                            <span>(ঘ) i, ii ও iii</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q16 -->
+            <div class="q-item">
+                <div class="q-question">১৬. কোন ক্ষেত্রে উত্তল আয়না ব্যবহার করা হয়?</div>
+                <div class="options-row">
+                    <span><span class="correct-ans">(ক) গাড়ির ড্রাইভারের সামনে</span></span>
+                    <span>(খ) ডেন্টিস্টদের দাঁত দেখার ক্ষেত্রে</span>
+                    <span>(গ) টেলিস্কোপে</span>
+                    <span>(ঘ) লঞ্চের সার্চলাইটে</span>
+                </div>
+            </div>
+
+            <!-- Q17 -->
+            <div class="q-item">
+                <div class="q-question">১৭. কোনো লেন্সের ক্ষমতা +5D হলে ফোকাস দূরত্ব কত?</div>
+                <div class="options-row">
+                    <span>(ক) -20 cm</span>
+                    <span>(খ) 0.2 cm</span>
+                    <span><span class="correct-ans">(গ) 20 cm</span></span>
+                    <span>(ঘ) .5 m</span>
+                </div>
+            </div>
+
+            <!-- Q18 -->
+            <div class="q-item">
+                <div class="q-question">১৮. লেন্সের ক্ষমতার একক কোনটি?</div>
+                <div class="options-row">
+                    <span><span class="correct-ans">(ক) ডায়াপ্টার</span></span>
+                    <span>(খ) ওয়াট</span>
+                    <span>(গ) অশ্ব ক্ষমতা</span>
+                    <span>(ঘ) কিলোওয়াট-ঘণ্টা</span>
+                </div>
+            </div>
+
+            <!-- Q19 -->
+            <div class="q-item">
+                <div class="q-question">১৯. NC⁻¹ কোন রাশির একক?</div>
+                <div class="options-row">
+                    <span>(ক) তড়িৎ বিভব</span>
+                    <span>(খ) তড়িৎ আধান</span>
+                    <span>(গ) তড়িৎ বল</span>
+                    <span><span class="correct-ans">(ঘ) তড়িৎ তীব্রতা</span></span>
+                </div>
+            </div>
+
+            <!-- Q20 -->
+            <div class="q-item">
+                <div class="q-question">২০. 220V-60W এর বাল্বে প্রতি সেকেন্ডে কী পরিমাণ বৈদ্যুতিক শক্তি ব্যয়িত হয়?</div>
+                <div class="options-row">
+                    <span><span class="correct-ans">(ক) 60 J</span></span>
+                    <span>(খ) 220 J</span>
+                    <span>(গ) 3600 J</span>
+                    <span>(ঘ) 13200 J</span>
+                </div>
+            </div>
+
+            <!-- Q21 -->
+            <div class="q-item">
+                <div class="q-question">২১. EMF নির্ণয়ের সূত্র কোনটি?</div>
+                <div class="options-row">
+                    <span>(ক) I/V</span>
+                    <span>(খ) V/R</span>
+                    <span><span class="correct-ans">(গ) W/Q</span></span>
+                    <span>(ঘ) Q/t</span>
+                </div>
+            </div>
+
+            <!-- Stimulus for Q 22 & 23 (Circuit Image Box) -->
+            <div class="stimulus-box">
+                <strong>উদ্দীপকের আলোকে ২২ ও ২৩ নং প্রশ্নের উত্তর দাও :</strong><br>
+                <div style="margin: 6px auto; text-align: center;">
+                    <img src="circuit_q22.png" alt="বর্তনী চিত্র" style="max-width: 250px; height: auto; border: 1px solid #7f8c8d; background: #fff; padding: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; border: 1px dashed #7f8c8d; padding: 15px; font-size: 12px; background: #f8fafc; color: #475569;">
+                        🔌 [এখানে বর্তনী চিত্রটি প্রদর্শিত হবে — circuit_q22.png]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q22 -->
+            <div class="q-item">
+                <div class="q-question">২২. বর্তনীতে—</div>
+                <div class="options-row">
+                    <span>i. শ্রেণি সংযোগ আছে</span>
+                    <span>ii. সমান্তরাল সংযোগ আছে</span>
+                    <span>iii. তুল্যরোধ R₁ + R₂ + R₃ + R₄</span>
+                    <div style="margin-top: 2px; width: 100%;">
+                        <span>নিচের কোনটি সঠিক?</span>
+                        <div class="options-row" style="margin-top: 2px;">
+                            <span><span class="correct-ans">(ক) i ও ii</span></span>
+                            <span>(খ) i ও iii</span>
+                            <span>(গ) ii ও iii</span>
+                            <span>(ঘ) i, ii ও iii</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q23 -->
+            <div class="q-item">
+                <div class="q-question">২৩. বর্তনীর তুল্যরোধ—</div>
+                <div class="options-row">
+                    <span>(ক) 50 Ω</span>
+                    <span>(খ) 45 Ω</span>
+                    <span>(গ) 30 Ω</span>
+                    <span><span class="correct-ans">(ঘ) 20 Ω</span></span>
+                </div>
+            </div>
+
+            <!-- Q24 -->
+            <div class="q-item">
+                <div class="q-question">২৪. কোনো তেজস্ক্রিয় মৌলের অর্ধায়ু 50 বছর হলে 100 বছর পর মৌলটির শতকরা কত অংশ অবশিষ্ট থাকবে?</div>
+                <div class="options-row">
+                    <span>(ক) 0%</span>
+                    <span><span class="correct-ans">(খ) 25%</span></span>
+                    <span>(গ) 50%</span>
+                    <span>(ঘ) 75%</span>
+                </div>
+            </div>
+
+            <!-- Q25 -->
+            <div class="q-item">
+                <div class="q-question">২৫. রেকটিফায়ার কী কাজ করে?</div>
+                <div class="options-row">
+                    <span>(ক) ভোল্টেজ বিবর্ধনে</span>
+                    <span><span class="correct-ans">(খ) তড়িৎ প্রবাহ একমুখীকরণে</span></span>
+                    <span>(গ) তড়িৎ প্রবাহ হ্রাসে</span>
+                    <span>(ঘ) তড়িৎ প্রবাহ বিবর্ধনে</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Drawing & Annotation Script ================= -->
+    <script>
+        let isToolbarOpen = false;
+        let isSettingsOpen = false;
+        let currentTool = 'pen';
+        let activeCanvas = null;
+
+        let penColor = '#FF3B30';
+        let penSize = 3;
+        let highlighterColor = 'rgba(253, 224, 71, 0.35)';
+        let highlighterSize = 22;
+        let eraserSize = 25;
+
+        const penColors = ['#FF3B30', '#007AFF', '#111827', '#10B981'];
+        const highlighterColors = [
+            'rgba(253, 224, 71, 0.35)',
+            'rgba(134, 239, 172, 0.35)',
+            'rgba(253, 186, 116, 0.35)',
+            'rgba(244, 114, 182, 0.30)'
+        ];
+
+        const history = new Map();
+
+        function refreshCanvases() {
+            document.querySelectorAll('.page').forEach(page => {
+                const canvas = page.querySelector('.draw-canvas');
+                if (!canvas) return;
+
+                const w = page.clientWidth;
+                const h = page.clientHeight;
+                if (canvas.width !== w || canvas.height !== h) {
+                    canvas.width = w;
+                    canvas.height = h;
+                }
+
+                if (!history.has(canvas)) {
+                    history.set(canvas, { undo: [], redo: [] });
+                    saveCanvasState(canvas);
+                    attachCanvasDrawEvents(canvas);
+                }
+            });
+        }
+
+        refreshCanvases();
+        window.addEventListener('load', refreshCanvases);
+        window.addEventListener('resize', refreshCanvases);
+
+        function toggleToolbar() {
+            isToolbarOpen = !isToolbarOpen;
+            const toolbar = document.getElementById('toolbar');
+            
+            if (isToolbarOpen) {
+                refreshCanvases();
+                toolbar.classList.add('open');
+            } else {
+                toolbar.classList.remove('open');
+                closeSettings();
+            }
+
+            document.querySelectorAll('.draw-canvas').forEach(c => {
+                c.style.pointerEvents = isToolbarOpen ? 'auto' : 'none';
+            });
+        }
+
+        function selectTool(tool) {
+            currentTool = tool;
+            document.getElementById('btn-pen').classList.toggle('active', tool === 'pen');
+            document.getElementById('btn-highlighter').classList.toggle('active', tool === 'highlighter');
+            document.getElementById('btn-eraser').classList.toggle('active', tool === 'eraser');
+            
+            if (isSettingsOpen) {
+                updateSettingsUI();
+            }
+        }
+
+        function toggleSettings() {
+            isSettingsOpen = !isSettingsOpen;
+            const panel = document.getElementById('settingsPanel');
+            if (isSettingsOpen) {
+                panel.classList.add('open');
+                updateSettingsUI();
+            } else {
+                panel.classList.remove('open');
+            }
+        }
+
+        function closeSettings() {
+            isSettingsOpen = false;
+            document.getElementById('settingsPanel').classList.remove('open');
+        }
+
+        function updateSettingsUI() {
+            const title = document.getElementById('panelTitle');
+            const colorList = document.getElementById('colorList');
+            const slider = document.getElementById('sizeSlider');
+            const previewDot = document.getElementById('previewDot');
+
+            colorList.innerHTML = '';
+
+            if (currentTool === 'pen') {
+                title.innerText = 'Pen Color & Size';
+                colorList.style.display = 'flex';
+                slider.min = 1;
+                slider.max = 14;
+                slider.value = penSize;
+                previewDot.style.background = penColor;
+                previewDot.style.width = penSize * 2 + 'px';
+                previewDot.style.height = penSize * 2 + 'px';
+
+                penColors.forEach(c => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'color-bubble' + (c === penColor ? ' selected' : '');
+                    bubble.style.background = c;
+                    bubble.onclick = () => {
+                        penColor = c;
+                        document.getElementById('pen-indicator').style.background = c;
+                        updateSettingsUI();
+                    };
+                    colorList.appendChild(bubble);
+                });
+            } else if (currentTool === 'highlighter') {
+                title.innerText = 'Highlighter Color & Size';
+                colorList.style.display = 'flex';
+                slider.min = 12;
+                slider.max = 35;
+                slider.value = highlighterSize;
+                previewDot.style.background = highlighterColor;
+                previewDot.style.width = Math.min(26, highlighterSize) + 'px';
+                previewDot.style.height = Math.min(26, highlighterSize) + 'px';
+
+                highlighterColors.forEach(c => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'color-bubble' + (c === highlighterColor ? ' selected' : '');
+                    bubble.style.background = c;
+                    bubble.onclick = () => {
+                        highlighterColor = c;
+                        document.getElementById('highlighter-indicator').style.background = c;
+                        updateSettingsUI();
+                    };
+                    colorList.appendChild(bubble);
+                });
+            } else {
+                title.innerText = 'Eraser Size';
+                colorList.style.display = 'none';
+                slider.min = 8;
+                slider.max = 50;
+                slider.value = eraserSize;
+                previewDot.style.background = '#94A3B8';
+                previewDot.style.width = Math.min(28, eraserSize / 1.5) + 'px';
+                previewDot.style.height = Math.min(28, eraserSize / 1.5) + 'px';
+            }
+        }
+
+        function changeSize(val) {
+            val = parseInt(val);
+            const previewDot = document.getElementById('previewDot');
+            if (currentTool === 'pen') {
+                penSize = val;
+                previewDot.style.width = val * 2 + 'px';
+                previewDot.style.height = val * 2 + 'px';
+            } else if (currentTool === 'highlighter') {
+                highlighterSize = val;
+                previewDot.style.width = Math.min(26, val) + 'px';
+                previewDot.style.height = Math.min(26, val) + 'px';
+            } else {
+                eraserSize = val;
+                previewDot.style.width = Math.min(28, val / 1.5) + 'px';
+                previewDot.style.height = Math.min(28, val / 1.5) + 'px';
+            }
+        }
+
+        function saveCanvasState(canvas) {
+            const ctx = canvas.getContext('2d');
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const h = history.get(canvas);
+            if (h) {
+                h.undo.push(data);
+                if (h.undo.length > 20) h.undo.shift();
+                h.redo = [];
+            }
+        }
+
+        function undo() {
+            if (!activeCanvas) activeCanvas = document.querySelector('.draw-canvas');
+            const h = history.get(activeCanvas);
+            if (h && h.undo.length > 1) {
+                const current = h.undo.pop();
+                h.redo.push(current);
+                const prev = h.undo[h.undo.length - 1];
+                activeCanvas.getContext('2d').putImageData(prev, 0, 0);
+            }
+        }
+
+        function redo() {
+            if (!activeCanvas) activeCanvas = document.querySelector('.draw-canvas');
+            const h = history.get(activeCanvas);
+            if (h && h.redo.length > 0) {
+                const next = h.redo.pop();
+                h.undo.push(next);
+                activeCanvas.getContext('2d').putImageData(next, 0, 0);
+            }
+        }
+
+        function attachCanvasDrawEvents(canvas) {
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+            let lastX = 0, lastY = 0;
+
+            function getCoords(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                return {
+                    x: (clientX - rect.left) * scaleX,
+                    y: (clientY - rect.top) * scaleY
+                };
+            }
+
+            function start(e) {
+                if (!isToolbarOpen) return;
+                activeCanvas = canvas;
+                isDrawing = true;
+                const pos = getCoords(e);
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function move(e) {
+                if (!isDrawing || !isToolbarOpen) return;
+                if (e.cancelable) e.preventDefault();
+
+                const pos = getCoords(e);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                if (currentTool === 'eraser') {
+                    ctx.globalCompositeOperation = 'destination-out';
+                    ctx.lineWidth = eraserSize;
+                } else if (currentTool === 'highlighter') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = highlighterColor;
+                    ctx.lineWidth = highlighterSize;
+                } else {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = penColor;
+                    ctx.lineWidth = penSize;
+                }
+
+                ctx.stroke();
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function end() {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveCanvasState(canvas);
+                }
+            }
+
+            canvas.addEventListener('mousedown', start);
+            canvas.addEventListener('mousemove', move);
+            canvas.addEventListener('mouseup', end);
+            canvas.addEventListener('mouseleave', end);
+
+            canvas.addEventListener('touchstart', start, { passive: false });
+            canvas.addEventListener('touchmove', move, { passive: false });
+            canvas.addEventListener('touchend', end);
+        }
+
+        const dragContainer = document.getElementById('draggableToolbar');
+        const dragHandle = document.getElementById('dragHandle');
+
+        let isDragging = false;
+        let startClientX = 0, startClientY = 0;
+        let startBottom = 0, startRight = 0;
+
+        function startDrag(e) {
+            const evt = e.touches ? e.touches[0] : e;
+            isDragging = true;
+            startClientX = evt.clientX;
+            startClientY = evt.clientY;
+
+            const rect = dragContainer.getBoundingClientRect();
+            startBottom = window.innerHeight - rect.bottom;
+            startRight = window.innerWidth - rect.right;
+
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function onDrag(e) {
+            if (!isDragging) return;
+            const evt = e.touches ? e.touches[0] : e;
+            const dx = evt.clientX - startClientX;
+            const dy = evt.clientY - startClientY;
+
+            let newBottom = startBottom - dy;
+            let newRight = startRight - dx;
+
+            newBottom = Math.max(15, Math.min(newBottom, window.innerHeight - 380));
+            newRight = Math.max(15, Math.min(newRight, window.innerWidth - 75));
+
+            dragContainer.style.bottom = newBottom + 'px';
+            dragContainer.style.right = newRight + 'px';
+            dragContainer.style.top = 'auto';
+            dragContainer.style.left = 'auto';
+
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function endDrag() {
+            isDragging = false;
+        }
+
+        dragHandle.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', onDrag);
+        window.addEventListener('mouseup', endDrag);
+
+        dragHandle.addEventListener('touchstart', startDrag, { passive: false });
+        window.addEventListener('touchmove', onDrag, { passive: false });
+        window.addEventListener('touchend', endDrag);
+    </script>
+</body>
+</html>
