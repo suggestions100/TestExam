@@ -13,19 +13,73 @@
     <meta property="og:description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর রসায়ন বিষয়ের বহুনির্বাচনি প্রশ্ন ও সঠিক উত্তরগুলো দেখে নিন।">
     <meta property="og:type" content="website">
     <!-- MathJax কনফিগারেশন এবং লাইব্রেরি -->
-    <script>
-        window.MathJax = {
-            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://jsdelivr.net"></script>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+                /* উদ্দীপকের মূল বক্স */
+        .stimulus-box {
+            border: 1px solid #ccc;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            max-width: 100%; /* মোবাইলের স্ক্রিন অনুযায়ী এডজাস্ট হবে */
+            margin: 15px auto;
+            font-family: Arial, sans-serif;
+            font-size: 14px; /* টেক্সট সাইজ কিছুটা ছোট করা হয়েছে */
+            line-height: 1.5;
+            box-sizing: border-box;
+        }
 
+        /* বিক্রিয়াটি এক লাইনে ধরে রাখার কন্টেইনার */
+        .reaction-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px; /* উপাদানগুলোর মাঝের গ্যাপ কমানো হয়েছে */
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        /* বিক্রিয়ক ও উৎপাদের লেখার সাইজ */
+        .compound {
+            font-size: 12px; /* মোবাইলের জন্য লেখার সাইজ অপ্টিমাইজড */
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* তীর এবং তার ওপর-নিচের লেখার বক্স */
+        .arrow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 65px; /* তীরের দৈর্ঘ্য ছোট করা হয়েছে যাতে স্ক্রিনে ধরে */
+            font-size: 10px; /* প্রভাবকের ফন্ট সাইজ ছোট করা হয়েছে */
+        }
+
+        /* ছোট তীর চিহ্ন */
+        .arrow-line {
+            width: 100%;
+            height: 1.5px;
+            background-color: black;
+            position: relative;
+            margin: 1px 0;
+        }
+
+        .arrow-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 0;
+            height: 0;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 6px solid black;
+        }
         body {
             background-color: #e5e7eb;
             font-family: Arial, "Segoe UI", "SolaimanLipi", Tahoma, sans-serif;
@@ -763,10 +817,34 @@
             </div>
 
             <!-- Stimulus for Q 21 & 22 -->
-            <div class="stimulus-box">
-                <strong>বিক্রিয়ার আলোকে ২১ ও ২২ নং প্রশ্নের উত্তর দাও :</strong><br>
-                $$\text{3-কার্বনবিশিষ্ট অ্যালকাইন} \xrightarrow[\text{Ni/200}^\circ\text{C}]{\text{H}_2} \text{P} \xrightarrow[\text{Ni/200}^\circ\text{C}]{\text{H}_2} \text{Q}$$
+                <div class="stimulus-box">
+        <strong>বিক্রিয়ার আলোকে ২১ ও ২২ নং প্রশ্নের উত্তর দাও :</strong>
+        
+        <div class="reaction-wrapper">
+            <!-- বিক্রিয়ক -->
+            <div class="compound">3-C অ্যালকাইন</div>
+            
+            <!-- প্রথম তীর -->
+            <div class="arrow-container">
+                <span>H<sub>2</sub></span>
+                <div class="arrow-line"></div>
+                <span>Ni/200&deg;C</span>
             </div>
+            
+            <!-- উৎপাদ P -->
+            <div class="compound">P</div>
+            
+            <!-- দ্বিতীয় তীর -->
+            <div class="arrow-container">
+                <span>H<sub>2</sub></span>
+                <div class="arrow-line"></div>
+                <span>Ni/200&deg;C</span>
+            </div>
+            
+            <!-- উৎপাদ Q -->
+            <div class="compound">Q</div>
+        </div>
+    </div>
             <!-- Q21 -->
             <div class="q-item">
                 <div class="q-question">২১. Q যৌগটির নাম কী?</div>
