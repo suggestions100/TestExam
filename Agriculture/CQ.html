@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Meta Tags for Facebook, Messenger, and Social Share -->
+    <title>নির্বাচনি পরীক্ষা-২০২৬ | কৃষিশিক্ষা সৃজনশীল (দাখিল দশম শ্রেণি) - সম্পূর্ণ প্রশ্নপত্র</title>
+    <meta name="description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর কৃষিশিক্ষা বিষয়ের সৃজনশীল প্রশ্নপত্র।">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:title" content="নির্বাচনি পরীক্ষা-২০২৬ | কৃষিশিক্ষা সৃজনশীল (দাখিল দশম শ্রেণি)">
+    <meta property="og:description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর কৃষিশিক্ষা বিষয়ের সৃজনশীল প্রশ্নপত্রটি দেখে নিন।">
+    <meta property="og:type" content="website">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e5e7eb;
+            font-family: Arial, "Segoe UI", "SolaimanLipi", Tahoma, sans-serif;
+            color: #000;
+            font-size: 13px;
+            line-height: 1.45;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 8px 100px 8px;
+            overflow-x: hidden;
+        }
+
+        .page {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .draw-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            pointer-events: none;
+            touch-action: none;
+        }
+
+        .annotation-container {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            z-index: 99999;
+            direction: ltr;
+            user-select: none;
+            touch-action: none;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            width: 54px;
+            height: 54px;
+            background: #EDE8FE;
+            border-radius: 16px;
+            border: 2px solid #C4B5FD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(109, 40, 217, 0.35);
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
+        }
+
+        .toggle-btn:active {
+            transform: scale(0.92);
+        }
+
+        .vertical-toolbar {
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 8px 6px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+            border: 1px solid #E2E8F0;
+            animation: popUp 0.18s ease forwards;
+        }
+
+        .vertical-toolbar.open {
+            display: flex;
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: translateY(12px) scale(0.92); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .drag-handle {
+            width: 36px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            color: #94A3B8;
+            font-size: 16px;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .tool-item {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tool-item.active {
+            background: #E0EDFF;
+        }
+
+        .tool-item svg {
+            width: 22px;
+            height: 22px;
+            stroke: #1E293B;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .color-indicator {
+            width: 18px;
+            height: 4px;
+            border-radius: 10px;
+            margin-top: 2px;
+        }
+
+        .settings-panel {
+            position: absolute;
+            right: 64px;
+            bottom: 0;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 12px 14px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+            border: 1px solid #E2E8F0;
+            width: 210px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            z-index: 105;
+        }
+
+        .settings-panel.open {
+            display: flex;
+        }
+
+        .panel-header {
+            font-weight: bold;
+            color: #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #F1F5F9;
+            padding-bottom: 4px;
+        }
+
+        .color-list {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .color-bubble {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        .color-bubble.selected {
+            outline: 2.5px solid #2563eb;
+            transform: scale(1.15);
+        }
+
+        .size-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .size-slider {
+            flex-grow: 1;
+            height: 6px;
+            accent-color: #2563eb;
+            cursor: pointer;
+        }
+
+        .preview-dot-container {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F8FAFC;
+            border-radius: 50%;
+            border: 1px solid #E2E8F0;
+        }
+
+        .preview-dot {
+            background: #FF3B30;
+            border-radius: 50%;
+            transition: all 0.1s ease;
+        }
+
+        .exam-header {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .exam-header h2 {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .exam-header h3 {
+            font-size: 14.5px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .exam-header h4 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12.5px;
+            font-weight: bold;
+            margin-top: 3px;
+        }
+
+        .subject-code-box {
+            border: 1px solid #000;
+            padding: 1px 6px;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        .instruction-box {
+            font-size: 11px;
+            border: 1px solid #000;
+            padding: 4px 6px;
+            margin: 5px 0 8px 0;
+            text-align: justify;
+        }
+
+        .page-num-top {
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .q-block {
+            margin-bottom: 8px;
+        }
+
+        .cq-stem {
+            font-weight: 600;
+            margin-bottom: 3px;
+            text-align: justify;
+        }
+
+        .cq-questions {
+            margin-left: 12px;
+        }
+
+        .cq-q {
+            margin-bottom: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .sub-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sub-list li {
+            margin-bottom: 3px;
+            display: flex;
+            align-items: baseline;
+            text-align: justify;
+        }
+
+        .sub-list li span.label {
+            font-weight: bold;
+            min-width: 25px;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 820px) {
+            body {
+                padding: 20px 0 100px 0;
+            }
+            .page {
+                width: 210mm;
+                min-height: 297mm;
+                padding: 14mm 16mm;
+                border-radius: 0;
+            }
+        }
+
+        @media print {
+            body {
+                background: transparent;
+                padding: 0;
+            }
+            .annotation-container, .settings-panel {
+                display: none !important;
+            }
+            .page {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 12mm 14mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= Draggable Floating Annotation Toolbar ================= -->
+    <div class="annotation-container" id="draggableToolbar">
+        <button class="toggle-btn" id="toggleBtn" onclick="toggleToolbar()" title="Open/Close Toolbar">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 18.5 3 20l1.5-4L16.5 3.5z"></path>
+                <path d="M4 8c2-2 4 0 5-1s2-3 4-2"></path>
+                <path d="M14 17c1 2 3 3 5 1"></path>
+            </svg>
+        </button>
+
+        <div class="vertical-toolbar" id="toolbar">
+            <div class="drag-handle" id="dragHandle" title="Drag to move toolbar">
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="#94A3B8">
+                    <circle cx="4" cy="3" r="1.5"/><circle cx="10" cy="3" r="1.5"/><circle cx="16" cy="3" r="1.5"/>
+                    <circle cx="4" cy="9" r="1.5"/><circle cx="10" cy="9" r="1.5"/><circle cx="16" cy="9" r="1.5"/>
+                </svg>
+            </div>
+
+            <button class="tool-item active" id="btn-pen" onclick="selectTool('pen')" title="Pen">
+                <svg viewBox="0 0 24 24" style="fill: #1E293B;">
+                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+                <span class="color-indicator" id="pen-indicator" style="background: #FF3B30;"></span>
+            </button>
+
+            <button class="tool-item" id="btn-highlighter" onclick="selectTool('highlighter')" title="Highlighter">
+                <svg viewBox="0 0 24 24">
+                    <path d="m14 4 6 6-9 9H5v-6l9-9zM18 10l-4-4"/>
+                    <path d="M3 21h6"/>
+                </svg>
+                <span class="color-indicator" id="highlighter-indicator" style="background: #FDE047;"></span>
+            </button>
+
+            <button class="tool-item" id="btn-eraser" onclick="selectTool('eraser')" title="Eraser">
+                <svg viewBox="0 0 24 24">
+                    <path d="m18 13-6-6-7.5 7.5a2.12 2.12 0 0 0 0 3L7 20h12v-2l-4-4"/>
+                    <line x1="7" y1="20" x2="17" y2="20"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="undo()" title="Undo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 14 4 9l5-5"/>
+                    <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="redo()" title="Redo">
+                <svg viewBox="0 0 24 24">
+                    <path d="m15 14 5-5-5-5"/>
+                    <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"/>
+                </svg>
+            </button>
+
+            <button class="tool-item" onclick="toggleSettings()" title="Settings" style="background: #F1F5F9;">
+                <svg viewBox="0 0 24 24" style="stroke: #2563eb;">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="settings-panel" id="settingsPanel">
+            <div class="panel-header">
+                <span id="panelTitle">Color & Size</span>
+                <span style="cursor:pointer; font-size:16px; padding:2px 6px;" onclick="closeSettings()">✕</span>
+            </div>
+            
+            <div class="color-list" id="colorList"></div>
+
+            <div style="font-size:12px; color:#64748B;">Thickness:</div>
+            <div class="size-box">
+                <input type="range" class="size-slider" id="sizeSlider" min="1" max="40" value="3" oninput="changeSize(this.value)">
+                <div class="preview-dot-container">
+                    <div class="preview-dot" id="previewDot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="page" id="page-1">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="exam-header">
+            <h2>নির্বাচনি পরীক্ষা-২০২৬</h2>
+            <h3>শ্রেণি : দাখিল দশম</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin: 2px 0;">
+                <div style="width: 120px;"></div>
+                <h4 style="margin: 0;">কৃষিশিক্ষা (সৃজনশীল প্রশ্ন)</h4>
+                <div style="font-size: 12.5px; font-weight: bold;">
+                    বিষয় কোড : <span class="subject-code-box">1|1|3</span>
+                </div>
+            </div>
+            <div class="meta-info">
+                <div>সময় : ২ ঘণ্টা ৩৫ মিনিট</div>
+                <div>পূর্ণমান : ৫০</div>
+            </div>
+            <div class="instruction-box">
+                <strong>দ্রষ্টব্য :</strong> ডান পাশের সংখ্যা প্রশ্নের পূর্ণমান জ্ঞাপক। প্রদত্ত উদ্দীপকগুলো মনোযোগসহকারে পড় এবং সংশ্লিষ্ট প্রশ্নগুলোর যথার্থ উত্তর দাও। ৮নং প্রশ্নসহ যেকোনো পাঁচটি প্রশ্নের উত্তর দিতে হবে।
+            </div>
+        </div>
+
+        <!-- CQ 1 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ১। প্রচুর বৃষ্টিপাতের কারণে ইলিয়াস মিয়ার এলাকা প্লাবিত হয়। ফলে ফসলি ও অনাবাদী জমির মাটি পানির সাথে প্রবাহিত হওয়ায় প্রচুর ভূমিক্ষয় হয়। স্থানীয় কৃষি বিশেষজ্ঞ এলাকা পরিদর্শন করে ভূমিক্ষয় রোধে কার্যকরী উপায়সমূহ অবলম্বনের পরামর্শ দেন।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. বকচর কাকে বলে?</span><span>১</span></div>
+                <div class="cq-q"><span>খ. সম্পূরক খাদ্যের গুরুত্ব ব্যাখ্যা কর।</span><span>২</span></div>
+                <div class="cq-q"><span>গ. ইলিয়াস মিয়ার এলাকায় সৃষ্ট ভূমিক্ষয়ের প্রকৃতি ব্যাখ্যা কর।</span><span>৩</span></div>
+                <div class="cq-q"><span>ঘ. উদ্দীপকে কৃষি বিশেষজ্ঞের পরামর্শ মূল্যায়ন কর।</span><span>৪</span></div>
+            </div>
+        </div>
+
+        <!-- CQ 2 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ২। জসিম সাহেবের ক্রয়কৃত আলু বীজ অধিক জমিতে লাগানোর আশায় কেটে তিনভাগ করেন। তার মেয়ে সুমনাকে সমস্ত আলুর বীজ একইভাবে কাটতে বললেন। বীজগুলো কাটা শেষ হলে মূল জমিতে ৭-৮ সে. মি. দূরত্বে রোপণ করলেন। এ বছর এলাকায় জৈব সারের ঘাটতি থাকার কারণে তিনি তার জমিতে একটু বেশি পরিমাণে রাসায়নিক সার প্রয়োগ করলেন।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. কোন মাটি ধান চাষের জন্য উত্তম?</span><span>১</span></div>
+                <div class="cq-q"><span>খ. ভূমিক্ষয়ে কেন কৃষি যন্ত্রপাতি ব্যবহারে অসুবিধা হয় তা ব্যাখ্যা কর।</span><span>২</span></div>
+                <div class="cq-q"><span>গ. জসিম সাহেবের আলু বীজগুলো রোপণ উপযোগীকরণের সঠিক কার্যক্রমটি ব্যাখ্যা কর।</span><span>৩</span></div>
+                <div class="cq-q"><span>ঘ. উদ্দীপকে জসিম সাহেব জমিতে যে ধরনের সার ব্যবস্থাপনা গ্রহণ করেছিলেন তার যথার্থতা মূল্যায়ন কর।</span><span>৪</span></div>
+            </div>
+        </div>
+
+        <!-- CQ 3 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ৩। পুকুরে পোনা ছাড়ার জন্য নিকটবর্তী কোনো সরকারি বা বেসরকারি হ্যাচারি বা নার্সারি থেকে পোনা সংগ্রহ করতে পারে। কাছাকাছি স্থানে মাটির হাঁড়ি বা অ্যালুমিনিয়ামের পাত্রে পোনা পরিবহন করা যেতে পারে। কিন্তু দূরবর্তী স্থানের ক্ষেত্রে পলিথিন ব্যাগে অক্সিজেন দিয়ে পোনা বহন করা উচিত। এক্ষেত্রে পলিথিন ব্যাগে ৩ ভাগের ১ ভাগ পানি ও ২ ভাগ অক্সিজেন দিয়ে পোনা বহন করতে হবে। পোনা সরাসরি পুকুরে ছাড়া উচিত নয়। পোনা ছাড়ার পূর্বে পোনাকে পুকুরের পানির সাথে খাপ খাইয়ে নিতে হবে।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. মাছের অভয়াশ্রম কী?</span><span>১</span></div>
+                <div class="cq-q"><span>খ. মৌসুমি পুকুর বলতে কী বোঝ?</span><span>২</span></div>
+                <div class="cq-q"><span>গ. মাছের পোনার বিভিন্ন পর্যায়গুলো ব্যাখ্যা করো।</span><span>৩</span></div>
+                <div class="cq-q"><span>ঘ. পুকুরের বিভিন্ন স্তরগুলোর বর্ণনা করো।</span><span>৪</span></div>
+            </div>
+        </div>
+
+        <!-- CQ 4 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ৪। উত্তরাঞ্চলের অধিবাসী জামান একজন গরিব জেলে। তিনি তার ভাতিজা সুমনকে সঙ্গে করে কারেন্ট জাল দিয়ে চলন বিলে মাছ ধরতে যায়। তখন ছিল চৈত্র মাসের মাঝামাঝি সময়। তারা বেশ কিছু ডিম ওয়ালা শোল, টাকি, মাগুর, শিং ও কই মাছ ধরে। কিন্তু বাড়ি ফেরার পথে রাস্তায় পুলিশের সাথে দেখা হয়। পুলিশ তাদের থানায় ধরে নিয়ে যায়। ঘটনা শুনে এলাকার অন্য জেলেদের মধ্যে আতঙ্ক ছড়িয়ে পড়ে।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. অভিযোজন কাকে বলে?</span><span>১</span></div>
+                <div class="cq-q"><span>খ. পুকুরে মাছের পোনা ছাড়ার সঠিক পদ্ধতি ব্যাখ্যা কর।</span><span>২</span></div>
+                <div class="cq-q"><span>গ. জামান ও তার ভাতিজার কী ধরনের শাস্তি হতে পারে? ব্যাখ্যা কর।</span><span>৩</span></div>
+                <div class="cq-q"><span>ঘ. জামান ও তার ভাতিজার কাজটি মৎস্য পরিবেশের কী ধরনের প্রভাব ফেলবে? উদ্দীপকের আলোকে বিশ্লেষণ কর।</span><span>৪</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="page" id="page-2">
+        <canvas class="draw-canvas"></canvas>
+
+        <div class="page-num-top">ii</div>
+
+        <div class="q-block">
+            <!-- CQ 5 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৫। আবু বক্করের বাড়ি সমুদ্র উপকূলবর্তী সাতক্ষীরা জেলায়। তিনি আবাদী জমিতে স্থানীয় জাতের ধান চাষ করে উৎপাদনে ব্যর্থ হন। এরপর কৃষি কর্মকর্তার পরামর্শে বিনা ধান-৮ চাষের সিদ্ধান্ত গ্রহণ করেন। একদিন কৃষি সম্প্রসারণ অধিদপ্তর কর্তৃক প্রদর্শিত তথ্য চিত্র দেখে আবু বক্কর লবণাক্ততা সহায়ক বিভিন্ন ফসলের চাষ সম্পর্কে অনেক তথ্যই জানতে পারলেন।
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. লবণাক্ত সহিষ্ণু ফসল কাকে বলে?</span><span>১</span></div>
+                    <div class="cq-q"><span>খ. তাপমাত্রা কীভাবে কৃষি উৎপাদন ব্যাহত করে? ব্যাখ্যা করো।</span><span>২</span></div>
+                    <div class="cq-q"><span>গ. আবু বক্করের সিদ্ধান্তটি সঠিক কি না তা ব্যাখ্যা করো।</span><span>৩</span></div>
+                    <div class="cq-q"><span>ঘ. আবু বক্করের এলাকায় কৃষি সম্প্রসারণ অধিদপ্তরের কার্যক্রম মূল্যায়ন করো।</span><span>৪</span></div>
+                </div>
+            </div>
+
+            <!-- CQ 6 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৬। আয়শা বেগম বিল অঞ্চলে উঁচু ভিটে বাড়িতে বসবাস করেন। যুব উন্নয়ন অধিদপ্তর থেকে সবজি চাষের উপর প্রশিক্ষণ নিয়ে বাড়ির আঙিনায় ৫ শতক জমিতে পালংশাক চাষ করে সফলতা লাভ করলেন। এ সফলতার পর তিনি বিলে অবস্থিত তার জমিগুলোর উঁচু আইলেও পালংশাক চাষের পরিকল্পনা গ্রহণ করলেন।
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. পালংশাকের একটি জাতের নাম লেখো।</span><span>১</span></div>
+                    <div class="cq-q"><span>খ. পালংশাক চাষে 'ইউরিয়া সার' উপরি প্রযোগের কারণ ব্যাখ্যা করো।</span><span>২</span></div>
+                    <div class="cq-q"><span>গ. আয়শা বেগম জমিতে কী পরিমাণ জৈব সার প্রয়োগ করেছিলেন নির্ণয় করো।</span><span>৩</span></div>
+                    <div class="cq-q"><span>ঘ. আয়শা বেগমের পরিকল্পনা তার কৃষি কার্যক্রমকে কীভাবে প্রভাবিত করবে বিশ্লেষণ করো।</span><span>৪</span></div>
+                </div>
+            </div>
+
+            <!-- CQ 7 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৭। মো. শামছু উদ্দিন, জহিরুল হক যশোরের জেলার মনিপুর গ্রামের বাসিন্দা। বসতবাড়ি ব্যতীত তাদের সামান্য আবাদি জমি রয়েছে। তাদের প্রতিবেশী কৃষকদেরও একই অবস্থা। ফলে সকলেই সাংসারিক খরচ চালাতে হিমশিম খান। যুব উন্নয়ন কর্মীর পরামর্শে মো. শামছু উদ্দিনের নেতৃত্বে উক্ত গ্রামের কৃষকরা সমবায় সমিতি গঠন করে কৃষি ঋণ পাওয়ার জন্য প্রয়োজনীয় কার্যক্রম গ্রহণ করলেন। অপরদিকে জহিরুল হকের নেতৃত্বে সমবায়ের মাধ্যমে 'ফুল নার্সারি' স্থাপন করে বিভিন্ন কাজে সবাই নিয়োজিত হয়ে গেলেন। এতে অল্প সময়েই তারা আয়ের মুখ দেখতে পেলেন।
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. কৃষি সমবায় কাকে বলে?</span><span>১</span></div>
+                    <div class="cq-q"><span>খ. সমবায় ব্যবস্থা কীভাবে অপরকে সক্রিয় হতে শেখায় ব্যাখ্যা করো।</span><span>২</span></div>
+                    <div class="cq-q"><span>গ. শামছুদ্দিনের গৃহীত কার্যক্রমের ধারা ব্যাখ্যা করো।</span><span>৩</span></div>
+                    <div class="cq-q"><span>ঘ. উদ্দীপকে উল্লিখিত অঞ্চলে কৃষকদের আয় বৃদ্ধিতে জহিরুল হকের নেতৃত্বের যথার্থতা মূল্যায়ন করো।</span><span>৪</span></div>
+                </div>
+            </div>
+
+            <!-- Short Questions Q8 -->
+            <div class="q-block" style="margin-top: 10px;">
+                <div class="q-title" style="margin-bottom: 4px;">
+                    <span>৮। সংক্ষেপে যেকোনো পাঁচটি প্রশ্নের উত্তর দাও :</span>
+                    <span class="q-marks">২ × ৫ = ১০</span>
+                </div>
+                <ul class="sub-list">
+                    <li><span class="label">(ক)</span> <span>ভূমিক্ষয় কয় ধরনের হয়ে থাকে?</span></li>
+                    <li><span class="label">(খ)</span> <span>বীজ শুকানোর পদ্ধতিগুলো কী কী?</span></li>
+                    <li><span class="label">(গ)</span> <span>গোয়াল ঘর কী?</span></li>
+                    <li><span class="label">(ঘ)</span> <span>হ্যাচারি ঘর কী?</span></li>
+                    <li><span class="label">(ঙ)</span> <span>জলবায়ু কী?</span></li>
+                    <li><span class="label">(চ)</span> <span>উফশী ধানের বৈশিষ্ট্যগুলো লেখ।</span></li>
+                    <li><span class="label">(ছ)</span> <span>পরিবেশবান্ধব কৃষি প্রযুক্তি বলতে কী বোঝ?</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Drawing & Annotation Script ================= -->
+    <script>
+        let isToolbarOpen = false;
+        let isSettingsOpen = false;
+        let currentTool = 'pen';
+        let activeCanvas = null;
+
+        let penColor = '#FF3B30';
+        let penSize = 3;
+        let highlighterColor = 'rgba(253, 224, 71, 0.35)';
+        let highlighterSize = 22;
+        let eraserSize = 25;
+
+        const penColors = ['#FF3B30', '#007AFF', '#111827', '#10B981'];
+        const highlighterColors = [
+            'rgba(253, 224, 71, 0.35)',
+            'rgba(134, 239, 172, 0.35)',
+            'rgba(253, 186, 116, 0.35)',
+            'rgba(244, 114, 182, 0.30)'
+        ];
+
+        const history = new Map();
+
+        function refreshCanvases() {
+            document.querySelectorAll('.page').forEach(page => {
+                const canvas = page.querySelector('.draw-canvas');
+                if (!canvas) return;
+
+                const w = page.clientWidth;
+                const h = page.clientHeight;
+                if (canvas.width !== w || canvas.height !== h) {
+                    canvas.width = w;
+                    canvas.height = h;
+                }
+
+                if (!history.has(canvas)) {
+                    history.set(canvas, { undo: [], redo: [] });
+                    saveCanvasState(canvas);
+                    attachCanvasDrawEvents(canvas);
+                }
+            });
+        }
+
+        refreshCanvases();
+        window.addEventListener('load', refreshCanvases);
+        window.addEventListener('resize', refreshCanvases);
+
+        function toggleToolbar() {
+            isToolbarOpen = !isToolbarOpen;
+            const toolbar = document.getElementById('toolbar');
+            
+            if (isToolbarOpen) {
+                refreshCanvases();
+                toolbar.classList.add('open');
+            } else {
+                toolbar.classList.remove('open');
+                closeSettings();
+            }
+
+            document.querySelectorAll('.draw-canvas').forEach(c => {
+                c.style.pointerEvents = isToolbarOpen ? 'auto' : 'none';
+            });
+        }
+
+        function selectTool(tool) {
+            currentTool = tool;
+            document.getElementById('btn-pen').classList.toggle('active', tool === 'pen');
+            document.getElementById('btn-highlighter').classList.toggle('active', tool === 'highlighter');
+            document.getElementById('btn-eraser').classList.toggle('active', tool === 'eraser');
+            
+            if (isSettingsOpen) {
+                updateSettingsUI();
+            }
+        }
+
+        function toggleSettings() {
+            isSettingsOpen = !isSettingsOpen;
+            const panel = document.getElementById('settingsPanel');
+            if (isSettingsOpen) {
+                panel.classList.add('open');
+                updateSettingsUI();
+            } else {
+                panel.classList.remove('open');
+            }
+        }
+
+        function closeSettings() {
+            isSettingsOpen = false;
+            document.getElementById('settingsPanel').classList.remove('open');
+        }
+
+        function updateSettingsUI() {
+            const title = document.getElementById('panelTitle');
+            const colorList = document.getElementById('colorList');
+            const slider = document.getElementById('sizeSlider');
+            const previewDot = document.getElementById('previewDot');
+
+            colorList.innerHTML = '';
+
+            if (currentTool === 'pen') {
+                title.innerText = 'Pen Color & Size';
+                colorList.style.display = 'flex';
+                slider.min = 1;
+                slider.max = 14;
+                slider.value = penSize;
+                previewDot.style.background = penColor;
+                previewDot.style.width = penSize * 2 + 'px';
+                previewDot.style.height = penSize * 2 + 'px';
+
+                penColors.forEach(c => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'color-bubble' + (c === penColor ? ' selected' : '');
+                    bubble.style.background = c;
+                    bubble.onclick = () => {
+                        penColor = c;
+                        document.getElementById('pen-indicator').style.background = c;
+                        updateSettingsUI();
+                    };
+                    colorList.appendChild(bubble);
+                });
+            } else if (currentTool === 'highlighter') {
+                title.innerText = 'Highlighter Color & Size';
+                colorList.style.display = 'flex';
+                slider.min = 12;
+                slider.max = 35;
+                slider.value = highlighterSize;
+                previewDot.style.background = highlighterColor;
+                previewDot.style.width = Math.min(26, highlighterSize) + 'px';
+                previewDot.style.height = Math.min(26, highlighterSize) + 'px';
+
+                highlighterColors.forEach(c => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'color-bubble' + (c === highlighterColor ? ' selected' : '');
+                    bubble.style.background = c;
+                    bubble.onclick = () => {
+                        highlighterColor = c;
+                        document.getElementById('highlighter-indicator').style.background = c;
+                        updateSettingsUI();
+                    };
+                    colorList.appendChild(bubble);
+                });
+            } else {
+                title.innerText = 'Eraser Size';
+                colorList.style.display = 'none';
+                slider.min = 8;
+                slider.max = 50;
+                slider.value = eraserSize;
+                previewDot.style.background = '#94A3B8';
+                previewDot.style.width = Math.min(28, eraserSize / 1.5) + 'px';
+                previewDot.style.height = Math.min(28, eraserSize / 1.5) + 'px';
+            }
+        }
+
+        function changeSize(val) {
+            val = parseInt(val);
+            const previewDot = document.getElementById('previewDot');
+            if (currentTool === 'pen') {
+                penSize = val;
+                previewDot.style.width = val * 2 + 'px';
+                previewDot.style.height = val * 2 + 'px';
+            } else if (currentTool === 'highlighter') {
+                highlighterSize = val;
+                previewDot.style.width = Math.min(26, val) + 'px';
+                previewDot.style.height = Math.min(26, val) + 'px';
+            } else {
+                eraserSize = val;
+                previewDot.style.width = Math.min(28, val / 1.5) + 'px';
+                previewDot.style.height = Math.min(28, val / 1.5) + 'px';
+            }
+        }
+
+        function saveCanvasState(canvas) {
+            const ctx = canvas.getContext('2d');
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const h = history.get(canvas);
+            if (h) {
+                h.undo.push(data);
+                if (h.undo.length > 20) h.undo.shift();
+                h.redo = [];
+            }
+        }
+
+        function undo() {
+            if (!activeCanvas) activeCanvas = document.querySelector('.draw-canvas');
+            const h = history.get(activeCanvas);
+            if (h && h.undo.length > 1) {
+                const current = h.undo.pop();
+                h.redo.push(current);
+                const prev = h.undo[h.undo.length - 1];
+                activeCanvas.getContext('2d').putImageData(prev, 0, 0);
+            }
+        }
+
+        function redo() {
+            if (!activeCanvas) activeCanvas = document.querySelector('.draw-canvas');
+            const h = history.get(activeCanvas);
+            if (h && h.redo.length > 0) {
+                const next = h.redo.pop();
+                h.undo.push(next);
+                activeCanvas.getContext('2d').putImageData(next, 0, 0);
+            }
+        }
+
+        function attachCanvasDrawEvents(canvas) {
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+            let lastX = 0, lastY = 0;
+
+            function getCoords(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                return {
+                    x: (clientX - rect.left) * scaleX,
+                    y: (clientY - rect.top) * scaleY
+                };
+            }
+
+            function start(e) {
+                if (!isToolbarOpen) return;
+                activeCanvas = canvas;
+                isDrawing = true;
+                const pos = getCoords(e);
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function move(e) {
+                if (!isDrawing || !isToolbarOpen) return;
+                if (e.cancelable) e.preventDefault();
+
+                const pos = getCoords(e);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                if (currentTool === 'eraser') {
+                    ctx.globalCompositeOperation = 'destination-out';
+                    ctx.lineWidth = eraserSize;
+                } else if (currentTool === 'highlighter') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = highlighterColor;
+                    ctx.lineWidth = highlighterSize;
+                } else {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = penColor;
+                    ctx.lineWidth = penSize;
+                }
+
+                ctx.stroke();
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function end() {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveCanvasState(canvas);
+                }
+            }
+
+            canvas.addEventListener('mousedown', start);
+            canvas.addEventListener('mousemove', move);
+            canvas.addEventListener('mouseup', end);
+            canvas.addEventListener('mouseleave', end);
+
+            canvas.addEventListener('touchstart', start, { passive: false });
+            canvas.addEventListener('touchmove', move, { passive: false });
+            canvas.addEventListener('touchend', end);
+        }
+
+        const dragContainer = document.getElementById('draggableToolbar');
+        const dragHandle = document.getElementById('dragHandle');
+
+        let isDragging = false;
+        let startClientX = 0, startClientY = 0;
+        let startBottom = 0, startRight = 0;
+
+        function startDrag(e) {
+            const evt = e.touches ? e.touches[0] : e;
+            isDragging = true;
+            startClientX = evt.clientX;
+            startClientY = evt.clientY;
+
+            const rect = dragContainer.getBoundingClientRect();
+            startBottom = window.innerHeight - rect.bottom;
+            startRight = window.innerWidth - rect.right;
+
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function onDrag(e) {
+            if (!isDragging) return;
+            const evt = e.touches ? e.touches[0] : e;
+            const dx = evt.clientX - startClientX;
+            const dy = evt.clientY - startClientY;
+
+            let newBottom = startBottom - dy;
+            let newRight = startRight - dx;
+
+            newBottom = Math.max(15, Math.min(newBottom, window.innerHeight - 380));
+            newRight = Math.max(15, Math.min(newRight, window.innerWidth - 75));
+
+            dragContainer.style.bottom = newBottom + 'px';
+            dragContainer.style.right = newRight + 'px';
+            dragContainer.style.top = 'auto';
+            dragContainer.style.left = 'auto';
+
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function endDrag() {
+            isDragging = false;
+        }
+
+        dragHandle.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', onDrag);
+        window.addEventListener('mouseup', endDrag);
+
+        dragHandle.addEventListener('touchstart', startDrag, { passive: false });
+        window.addEventListener('touchmove', onDrag, { passive: false });
+        window.addEventListener('touchend', endDrag);
+    </script>
+</body>
+</html>
