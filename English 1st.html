@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="bn" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Test Examination-2026 - English First Paper</title>
+    
+    <!-- Meta Tags for Facebook, Messenger, and Social Share -->
+    <title>নির্বাচনি পরীক্ষা-২০২৬ | গণিত সৃজনশীল প্রশ্ন (দাখিল দশম শ্রেণি) - সম্পূর্ণ প্রশ্নপত্র</title>
+    <meta name="description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর গণিত বিষয়ের সৃজনশীল ও সংক্ষিপ্ত প্রশ্নপত্র।">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:title" content="নির্বাচনি পরীক্ষা-২০২৬ | গণিত সৃজনশীল প্রশ্ন (দাখিল দশম শ্রেণি)">
+    <meta property="og:description" content="দাখিল দশম শ্রেণির নির্বাচনি পরীক্ষা-২০২৬ এর গণিত বিষয়ের সৃজনশীল ও সংক্ষিপ্ত প্রশ্নপত্রটি দেখে নিন।">
+    <meta property="og:type" content="website">
+
     <style>
         * {
             box-sizing: border-box;
@@ -13,9 +22,9 @@
 
         body {
             background-color: #e5e7eb;
-            font-family: Arial, "Segoe UI", Tahoma, sans-serif;
+            font-family: Arial, "Segoe UI", "SolaimanLipi", Tahoma, sans-serif;
             color: #000;
-            font-size: 13.5px;
+            font-size: 13px;
             line-height: 1.45;
             display: flex;
             flex-direction: column;
@@ -254,7 +263,7 @@
         }
 
         .exam-header h4 {
-            font-size: 14.5px;
+            font-size: 14px;
             font-weight: bold;
             margin-bottom: 3px;
         }
@@ -263,96 +272,74 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: bold;
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
         .subject-code-box {
             border: 1px solid #000;
-            padding: 1px 4px;
+            padding: 1px 6px;
             display: inline-block;
             letter-spacing: 2px;
         }
 
-        .nb-text {
-            text-align: center;
-            font-size: 12px;
-            font-weight: bold;
-            margin: 2px 0 4px 0;
-        }
-
-        .part-title {
-            text-align: center;
-            font-weight: bold;
-            font-size: 14px;
-            margin: 4px 0 6px 0;
-            text-decoration: underline;
+        .instruction-box {
+            font-size: 11px;
+            border: 1px solid #000;
+            padding: 4px 6px;
+            margin: 5px 0 8px 0;
+            text-align: justify;
         }
 
         .page-num-top {
             text-align: center;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 12px;
             margin-bottom: 4px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 13.5px;
+            margin: 6px 0;
+            text-decoration: underline;
         }
 
         .q-block {
-            margin-bottom: 9px;
+            margin-bottom: 8px;
         }
 
-        .q-title {
+        .cq-stem {
+            font-weight: 600;
+            margin-bottom: 3px;
+            text-align: justify;
+        }
+
+        .cq-questions {
+            margin-left: 12px;
+        }
+
+        .cq-q {
+            margin-bottom: 2px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            gap: 8px;
-            font-weight: bold;
-            font-size: 13.5px;
-            margin-bottom: 3px;
-        }
-
-        .q-marks {
-            white-space: nowrap;
-            font-size: 12.5px;
-        }
-
-        .passage-text {
-            text-align: justify;
-            line-height: 1.45;
-            margin-bottom: 5px;
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px 10px;
-            margin-top: 2px;
-            margin-bottom: 4px;
-            font-size: 13px;
-        }
-
-        .options-grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4px 10px;
-            margin-top: 2px;
-            margin-bottom: 4px;
-            font-size: 13px;
+            align-items: baseline;
         }
 
         .match-table {
             width: 100%;
             border-collapse: collapse;
             border: 1px solid #000;
-            margin: 4px auto 6px auto;
+            margin: 5px 0;
+            font-size: 12px;
             text-align: center;
-            font-size: 12.5px;
         }
 
         .match-table th, .match-table td {
             border: 1px solid #000;
             padding: 3px 5px;
-            vertical-align: middle;
         }
 
         .sub-list {
@@ -369,7 +356,7 @@
 
         .sub-list li span.label {
             font-weight: bold;
-            min-width: 22px;
+            min-width: 25px;
             flex-shrink: 0;
         }
 
@@ -467,7 +454,7 @@
             <button class="tool-item" onclick="toggleSettings()" title="Settings" style="background: #F1F5F9;">
                 <svg viewBox="0 0 24 24" style="stroke: #2563eb;">
                     <circle cx="12" cy="12" r="3"/>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                 </svg>
             </button>
         </div>
@@ -495,31 +482,77 @@
         <canvas class="draw-canvas"></canvas>
 
         <div class="exam-header">
-            <h2>Test Examination-2026</h2>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-                <div style="width: 100px;"></div>
-                <h3>Dakhil Class Ten</h3>
-                <div style="font-size: 13px; font-weight: bold;">
-                    Subject Code : <span class="subject-code-box">1|3|7</span>
+            <h2>নির্বাচনি পরীক্ষা-২০২৬</h2>
+            <h3>দাখিল দশম শ্রেণি</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin: 2px 0;">
+                <div style="width: 120px;"></div>
+                <h4 style="margin: 0;">বিষয় : গণিত (সৃজনশীল প্রশ্ন)</h4>
+                <div style="font-size: 12.5px; font-weight: bold;">
+                    বিষয় কোড : <span class="subject-code-box">1|0|8</span>
                 </div>
             </div>
-            <h4>Subject : English First Paper</h4>
             <div class="meta-info">
-                <div>Time : 3 Hours</div>
-                <div>Full Marks : 100</div>
+                <div>সময় : ২ ঘণ্টা ৩০ মিনিট</div>
+                <div>পূর্ণমান : ৭০</div>
             </div>
-            <div class="nb-text">[N.B. : The figures in the right margin indicate full marks.]</div>
-            <div class="part-title">Part-A : Reading (Marks : 70)</div>
+            <div class="instruction-box">
+                <strong>দ্রষ্টব্য :</strong> ডান পাশের সংখ্যা প্রশ্নের পূর্ণমান জ্ঞাপক। ৯নং প্রশ্নসহ প্রত্যেক বিভাগ থেকে ন্যূনতম একটি করে প্রশ্ন নিয়ে মোট ছয়টি প্রশ্নের উত্তর দিতে হবে।
+            </div>
+            <div class="section-title">ক বিভাগ-বীজগণিত</div>
         </div>
 
-        <div class="passage-text" style="font-size: 12.5px; margin-bottom: 8px;">
-            <strong>Read the following passage and answer the questions no 1, 2 and 3.</strong><br>
-            'Heritage' is what we inherit from the past, live with in the present and then pass on to our children or future generations. Our unique source of life and inspiration is our cultural and natural heritage. When we speak of 'World Heritage', it indicates places and sites that we inherited from the past and pass on to the future generation of the entire world.<br>
-            The 'Shat Gambuj Mosque' in Bagerhat is such a heritage. It became a UNESCO World Heritage Site in 1985.<br>
-            Originally, the historic Mosque City was known as 'Khalifatabad'. It is situated at the outskirts of Bagerhat town--- not very far from the dense mangrove forest of the Sundarbans. Khalifatabad was a Muslim colony. It was founded by the Turkish general, a saint warrior Ulugh Khan Jahan in the 15th century. The infrastructure of the city reveals significant technical skills in many mosques as well as early Islamic monuments. Baked bricks were used for the construction of the buildings. The planning of the city was dominated by the tradition of Islamic architecture and the decorations were a combination of Mughal and Turkish architecture.<br>
-            Khan Jahan built a network of roads, bridges, public buildings and reservoirs to make the city habitable. There were about 360 mosques in the city. Among them the most remarkable is the multi-domed Shat Gambuj Mosque. The mosque is unique in the sense that it has 60 pillars that support the roof, with 77 low height domes. The 4 towers at 4 corners have smaller domes at the top as well. The vast prayer hall has 11 arched doorways on the east and 7 each on the north and south for light and ventilation. It has 7 aisles running along the length of the mosque and 11 deep curves between the slender stone columns. These columns support the curving arches created by the domes. The thickness of the arches is 6 feet and have slightly narrowing hollow and round wall.<br>
-            The west wall in the interior has 11 'mihrabs' (niche in mosque pointing towards Makkah). These mihrabs are decorated with stonework and terracotta. The floor of the mosque is made of brick.<br>
-            Besides being used as a prayer hall, Khan Jahan used the mosque as his court too. Today, it is one of the greatest tourist attractions and one of the best architectural beauties of Bangladesh.
+        <!-- CQ 1 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ১। A = {x ∈ ℕ : x² - 7x + 12 = 0}<br>
+                B = {x ∈ ℕ : 4 < x < 8}<br>
+                C = {x : x মৌলিক সংখ্যা এবং x ≤ 11}<br>
+                y = f(x) = (6x - 11) / (3x - 6) একটি ফাংশন।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. T = {a, b, c} হলে P(T) নির্ণয় কর।</span><span>২</span></div>
+                <div class="cq-q"><span>খ. উদ্দীপক হতে প্রমাণ কর যে, (A ∪ B) ∩ C = (A ∩ C) ∪ (B ∩ C)</span><span>৪</span></div>
+                <div class="cq-q"><span>গ. উদ্দীপক হতে দেখাও যে, √{x f(y)} = x</span><span>৪</span></div>
+            </div>
+        </div>
+
+        <!-- CQ 2 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ধারা-১ : 2 + 4 + 6 + 8 + ........ ধারাটির প্রথম n সংখ্যক পদের সমষ্টি ২৪৫০।<br>
+                ধারা-২ : 7 + p + q + 189 একটি গুণোত্তর ধারা।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. প্রথম 25টি স্বাভাবিক সংখ্যার সমষ্টি নির্ণয় কর।</span><span>২</span></div>
+                <div class="cq-q"><span>খ. ধারা-১ হতে দেখাও যে, n = 49।</span><span>৪</span></div>
+                <div class="cq-q"><span>গ. ধারা-২ হতে p ও q এর মান নির্ণয় কর।</span><span>৪</span></div>
+            </div>
+        </div>
+
+        <div class="section-title">খ বিভাগ-জ্যামিতি</div>
+
+        <!-- CQ 3 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ৩। a = 3.5 cm, b = 4.5 cm, c = 5.5 cm এবং ∠x = 60°, ∠y = 40°।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. উদ্দীপকের তথ্যগুলোকে চিত্রের মাধ্যমে প্রকাশ কর।</span><span>২</span></div>
+                <div class="cq-q"><span>খ. a, b এবং c দ্বারা ত্রিভুজ অঙ্কন করে ত্রিভুজটির অন্তর্বৃত্ত আঁক। [অঙ্কনের চিহ্ন ও বিবরণ আবশ্যক]</span><span>৪</span></div>
+                <div class="cq-q"><span>গ. একটি ত্রিভুজের দুইটি কোণ ∠x ও ∠y এবং পরিসীমা (a + b) সে.মি. হলে ত্রিভুজটি অঙ্কন কর। [অঙ্কনের চিহ্ন ও বিবরণ আবশ্যক]</span><span>৪</span></div>
+            </div>
+        </div>
+
+        <!-- CQ 4 -->
+        <div class="q-block">
+            <div class="cq-stem">
+                ৪। ΔPQR এর PQ ও PR বাহুর মধ্যবিন্দু যথাক্রমে S ও T।
+            </div>
+            <div class="cq-questions">
+                <div class="cq-q"><span>ক. AB = 6 সে.মি., AC = 8 সে.মি. এবং ∠BAC = 60° হলে, ΔABC এর ক্ষেত্রফল কত?</span><span>২</span></div>
+                <div class="cq-q"><span>খ. প্রমাণ কর যে, ST ∥ QR এবং QR = 2ST।</span><span>৪</span></div>
+                <div class="cq-q"><span>গ. প্রমাণ কর যে, ΔPST এর ক্ষেত্রফল = ¹/₄ (ΔPQR এর ক্ষেত্রফল)।</span><span>৪</span></div>
+            </div>
         </div>
     </div>
 
@@ -529,134 +562,78 @@
 
         <div class="page-num-top">ii</div>
 
-        <!-- Question 1 -->
         <div class="q-block">
-            <div class="q-title">
-                <span>1. Choose the best answer from the alternatives.</span>
-                <span class="q-marks">1 &times; 7 = 7</span>
-            </div>
-            <ul class="sub-list" style="flex-direction: column;">
-                <li>
-                    <span class="label">(a)</span>
-                    <div style="width: 100%;">
-                        <span>What does the word 'indicate' used in the text refer to &mdash;</span>
-                        <div class="options-grid">
-                            <span>i. mislead</span>
-                            <span>ii. delete</span>
-                            <span>iii. denote</span>
-                            <span>iv. hide</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="label">(b)</span>
-                    <div style="width: 100%;">
-                        <span>The word 'habitable' used in the text is a/an &mdash;.</span>
-                        <div class="options-grid">
-                            <span>i. verb</span>
-                            <span>ii. adjective</span>
-                            <span>iii. adverb</span>
-                            <span>iv. noun</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="label">(c)</span>
-                    <div style="width: 100%;">
-                        <span>'Heritage' is related to &mdash;.</span>
-                        <div class="options-grid">
-                            <span>i. past</span>
-                            <span>ii. present</span>
-                            <span>iii. future</span>
-                            <span>iv. all the options</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="label">(d)</span>
-                    <div style="width: 100%;">
-                        <span>The word 'unique' means &mdash;.</span>
-                        <div class="options-grid-2">
-                            <span>i. distinctive</span>
-                            <span>ii. universal</span>
-                        </div>
-                        <div class="options-grid-2">
-                            <span>iii. conventional</span>
-                            <span>iv. traditional</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="label">(e)</span>
-                    <div style="width: 100%;">
-                        <span>The surface of the mosque is of &mdash;.</span>
-                        <div class="options-grid">
-                            <span>i. stones</span>
-                            <span>ii. bricks</span>
-                            <span>iii. soil</span>
-                            <span>iv. marvels</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="label">(f)</span>
-                    <div style="width: 100%;">
-                        <span>There are almost &mdash; mosques in Bagerhat.</span>
-                        <div class="options-grid">
-                            <span>i. 470</span>
-                            <span>ii. 360</span>
-                            <span>iii. 350</span>
-                            <span>iv. 340</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="label">(g)</span>
-                    <div style="width: 100%;">
-                        <span>In the &mdash; century the Shat Gambuj Mosque was established.</span>
-                        <div class="options-grid">
-                            <span>i. 14<sup>th</sup></span>
-                            <span>ii. 15<sup>th</sup></span>
-                            <span>iii. 16<sup>th</sup></span>
-                            <span>iv. 17<sup>th</sup></span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+            <div class="section-title">গ বিভাগ-ত্রিকোণমিতি ও পরিমিতি</div>
 
-        <!-- Question 2 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>2. Answer the following questions.</span>
-                <span class="q-marks">2 &times; 5 = 10</span>
+            <!-- CQ 5 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৫। A = ¹/ᵣ sin(u + v), B = √3 tan(u - v) এবং
+                    <div style="margin: 6px auto; text-align: center;">
+                        <img src="math_q5.jpg" alt="সমকোণী ত্রিভুজ CDE" style="max-width: 150px; height: auto; border: 1px solid #7f8c8d; background: #fff; padding: 3px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; border: 1px dashed #7f8c8d; padding: 10px; font-size: 11px; background: #f8fafc; color: #475569;">
+                            📐 [এখানে ৫ নং প্রশ্নের ত্রিভুজের চিত্রটি প্রদর্শিত হবে — math_q5.jpg]
+                        </div>
+                    </div>
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. { 4 / (1 - sin² θ) - 4 / cot² θ }² এর মান নির্ণয় কর।</span><span>২</span></div>
+                    <div class="cq-q"><span>খ. উদ্দীপক হতে x এর মান নির্ণয় করে প্রমাণ কর যে, 3 cot² x + ¹/₄ cosec² x + 5 sin² x - 4 cos² x = 4।</span><span>৪</span></div>
+                    <div class="cq-q"><span>গ. উদ্দীপকের A = ¹/₂ এবং B = 1 হলে u এবং v এর মান নির্ণয় কর।</span><span>৪</span></div>
+                </div>
             </div>
-            <ul class="sub-list">
-                <li><span class="label">(a)</span> <span>When did the Shat Gambuj Mosque become a World Heritage?</span></li>
-                <li><span class="label">(b)</span> <span>Where is Khalifatabad situated?</span></li>
-                <li><span class="label">(c)</span> <span>What does the infrastructure of the city reveal?</span></li>
-                <li><span class="label">(d)</span> <span>What did Khan Jahan build in Bagerhat?</span></li>
-                <li><span class="label">(e)</span> <span>What do you understand by 'World Heritage'?</span></li>
-            </ul>
-        </div>
 
-        <!-- Question 3 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>3. Read the above passage and fill in each gap with a suitable word.</span>
-                <span class="q-marks">1 &times; 5 = 5</span>
+            <!-- CQ 6 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৬। 
+                    <div style="margin: 6px auto; text-align: center;">
+                        <img src="math_q6.jpg" alt="সমকোণী ত্রিভুজ MNO" style="max-width: 150px; height: auto; border: 1px solid #7f8c8d; background: #fff; padding: 3px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; border: 1px dashed #7f8c8d; padding: 10px; font-size: 11px; background: #f8fafc; color: #475569;">
+                            📐 [এখানে ৬ নং প্রশ্নের ত্রিভুজের চিত্রটি প্রদর্শিত হবে — math_q6.jpg]
+                        </div>
+                    </div>
+                </div>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. একটি বৃত্তচাপ কেন্দ্রে 30° কোণ উৎপন্ন করে। বৃত্তের ব্যাস 16 সে.মি. হলে চাপের দৈর্ঘ্য কত?</span><span>২</span></div>
+                    <div class="cq-q"><span>খ. MO এবং MN কে একটি আয়তক্ষেত্রের দুটি বাহু ধরে প্রতিটি 2 সে.মি. বর্গাকার পাথর দিয়ে আয়তক্ষেত্রটি বাঁধাতে মোট কতটি পাথর লাগবে?</span><span>৪</span></div>
+                    <div class="cq-q"><span>গ. উদ্দীপক অনুসারে NP এর দৈর্ঘ্য নির্ণয় কর।</span><span>৪</span></div>
+                </div>
             </div>
-            <div class="passage-text" style="font-size: 13px;">
-                Heritage, that we inherit from the past is our (a) &mdash;&mdash;. In Bangladesh, we have many remarkable heritages which have already been (b) &mdash;&mdash; by UNESCO as the World Heritage. All of them. 'Shat Gambuj Mosque of Bagerhat is one of the most imposing (c) &mdash;&mdash; beauties. The decoration of the mosque (d) &mdash;&mdash; the touch of remarkable technical sign. It was built by a great (e)&mdash;&mdash; and saint Ulugh Khan Jahan Ali.
-            </div>
-        </div>
 
-        <div class="passage-text" style="font-size: 12px; margin-top: 6px; font-weight: bold;">
-            Read the following passage carefully and answer the questions no. 4 and 5.
-        </div>
-        <div class="passage-text" style="font-size: 12px;">
-            Albert Einstein, the greatest scientist of the twentieth century and one of the supreme intellects of all time, was born in March 14, 1879 in the city of Ulm in Germany. He attended high school in Switzerland and became a Swiss citizen in 1901.<br>
-            He was appointed an examiner at the Swiss Patent Office in 1902. He served at this post for three years. He received his Ph. D in 1905 from the University of Zurich, but was unable to find an academic position at that time. However, the same year he began to publish original papers on the theoretical aspects of problems of Physics. Within a few years, these papers, particularly the one on relativity, established his reputation as one of the most brilliant and original scientists in the world. His theories were highly controversial. In spite of this, he was appointed a Professor at the University of Berlin, at the same time becoming a member of the Prussian Academy of Science. In 1921 he was awarded Nobel Prize for Physics.
+            <div class="section-title">ঘ বিভাগ-পরিসংখ্যান</div>
+
+            <!-- CQ 7 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৭। গণসংখ্যা নিবেশন সারণি নিম্নরূপ :
+                </div>
+                <table class="match-table" style="margin: 4px auto; width: 90%;">
+                    <tr>
+                        <th>শ্রেণিব্যাপ্তি</th>
+                        <td>11-17</td>
+                        <td>18-24</td>
+                        <td>25-31</td>
+                        <td>32-38</td>
+                        <td>39-45</td>
+                        <td>46-52</td>
+                    </tr>
+                    <tr>
+                        <th>গণসংখ্যা</th>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>19</td>
+                        <td>11</td>
+                        <td>5</td>
+                        <td>3</td>
+                    </tr>
+                </table>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. কোনো শ্রেণির উচ্চসীমা 75 এবং মধ্যমান 75.5 হলে এর নিম্নসীমা নির্ণয় কর।</span><span>২</span></div>
+                    <div class="cq-q"><span>খ. উদ্দীপক হতে প্রচুরক নির্ণয় কর।</span><span>৪</span></div>
+                    <div class="cq-q"><span>গ. প্রদত্ত সারণি থেকে অজিবরেখা অঙ্কন কর।</span><span>৪</span></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -666,184 +643,64 @@
 
         <div class="page-num-top">iii</div>
 
-        <div class="passage-text" style="font-size: 12px; margin-bottom: 6px;">
-            Einstein's situation in Germany became precious when Hitler rose to power. He moved to Princeton, New Jersey, U.S.A, in 1933 to work at the Institute for Advanced Study and in 1940, he became a citizen of the United States. Einstein's first marriage ended in divorce, but his second was quite happy. He had two children, both of them were boys. He died in 18 April 1955 in Princeton.
-        </div>
-
-        <!-- Question 4 -->
         <div class="q-block">
-            <div class="q-title">
-                <span>4. Complete the following table with information from the text.</span>
-                <span class="q-marks">1 &times; 5 = 5</span>
+            <!-- CQ 8 -->
+            <div class="q-block">
+                <div class="cq-stem">
+                    ৮। দশম শ্রেণির 60 জন শিক্ষার্থীর পদার্থবিজ্ঞান বিষয়ে প্রাপ্ত নম্বরের গণসংখ্যা নিবেশন সারণি দেওয়া হলো :
+                </div>
+                <table class="match-table" style="margin: 4px auto; width: 90%;">
+                    <tr>
+                        <th>শ্রেণিব্যাপ্তি</th>
+                        <td>43-47</td>
+                        <td>48-52</td>
+                        <td>53-57</td>
+                        <td>58-62</td>
+                        <td>63-67</td>
+                        <td>68-72</td>
+                        <td>73-77</td>
+                    </tr>
+                    <tr>
+                        <th>গণসংখ্যা</th>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>13</td>
+                        <td>17</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>4</td>
+                    </tr>
+                </table>
+                <div class="cq-questions">
+                    <div class="cq-q"><span>ক. 17, 22, 25, 12, 13, 28, x, 27 সংখ্যাগুলোর গড় 14.5 হলে, x এর মান নির্ণয় কর।</span><span>২</span></div>
+                    <div class="cq-q"><span>খ. প্রদত্ত সারণি হতে সংক্ষিপ্ত পদ্ধতিতে গড় নির্ণয় কর।</span><span>৪</span></div>
+                    <div class="cq-q"><span>গ. বিবরণসহ প্রদত্ত উপাত্তের অজিবরেখা অঙ্কন কর।</span><span>৪</span></div>
+                </div>
             </div>
-            <table class="match-table">
-                <tr>
-                    <th colspan="3" style="text-align: center; font-size: 13px;">Albert Einstein</th>
-                </tr>
-                <tr>
-                    <td>Regarded as</td>
-                    <td colspan="2">The greatest scientist of the twentieth century</td>
-                </tr>
-                <tr>
-                    <td>Did Ph.D</td>
-                    <td colspan="2">From (i)&mdash;&mdash;&mdash;&mdash;</td>
-                </tr>
-                <tr>
-                    <td><strong>Who/ What</strong></td>
-                    <td><strong>Event</strong></td>
-                    <td><strong>Place/ Time/ Creation/ Award/ Others</strong></td>
-                </tr>
-                <tr>
-                    <td>Albert Einstein</td>
-                    <td>was born</td>
-                    <td>(ii)&mdash;&mdash;&mdash;&mdash;.</td>
-                </tr>
-                <tr>
-                    <td>(iii)&mdash;&mdash;&mdash;&mdash;</td>
-                    <td>attended high school in</td>
-                    <td>Switzerland.</td>
-                </tr>
-                <tr>
-                    <td>He was appointed</td>
-                    <td>a Patent Officer</td>
-                    <td>(iv)&mdash;&mdash;&mdash;&mdash;.</td>
-                </tr>
-                <tr>
-                    <td>He was awarded</td>
-                    <td>Nobel Prize for Physics</td>
-                    <td>(v)&mdash;&mdash;&mdash;&mdash;.</td>
-                </tr>
-            </table>
-        </div>
 
-        <!-- Question 5 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>5. Write the summary of the passage given above.</span>
-                <span class="q-marks">10</span>
-            </div>
-        </div>
-
-        <!-- Question 6 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>6. Match the parts of sentences given in columns A, B and C to write five complete sentences.</span>
-                <span class="q-marks">1 &times; 5 = 5</span>
-            </div>
-            <table class="match-table" style="font-size: 11.5px; text-align: left;">
-                <tr>
-                    <th style="width: 33%;">Column 'A'</th>
-                    <th style="width: 33%;">Column 'B'</th>
-                    <th style="width: 34%;">Column 'C'</th>
-                </tr>
-                <tr>
-                    <td>(a) Patriotism is a great virtue</td>
-                    <td>i. to be ready to fight against</td>
-                    <td>i. themselves to work for the country.</td>
-                </tr>
-                <tr>
-                    <td>(b) It is such a virtue</td>
-                    <td>ii. to be patriot and to be devoted</td>
-                    <td>ii. all oppressions that can hinder our progress.</td>
-                </tr>
-                <tr>
-                    <td>(c) Patriotism inspires us</td>
-                    <td>iii. that inspire children to prepare</td>
-                    <td>iii. dream of a developed nation.</td>
-                </tr>
-                <tr>
-                    <td>(d) So, we all should encourage our children</td>
-                    <td>iv. without which we cannot</td>
-                    <td>iv. to their respective duties and responsibilities.</td>
-                </tr>
-                <tr>
-                    <td>(e) Radio and television should telecast programmes</td>
-                    <td>v. for which a citizen doesn't hesitate</td>
-                    <td>v. to shed the last drop of his blood.</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- ==================== PAGE 4 ==================== -->
-    <div class="page" id="page-4">
-        <canvas class="draw-canvas"></canvas>
-
-        <div class="page-num-top">iv</div>
-
-        <!-- Question 7 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>7. Re-arrange the following sentences according to sequence and re-write them in a paragraph.</span>
-                <span class="q-marks">1 &times; 8 = 8</span>
-            </div>
-            <ul class="sub-list" style="font-size: 12.5px;">
-                <li><span class="label">(a)</span> <span>He also believed that the west would be more receptive to his creative genius.</span></li>
-                <li><span class="label">(b)</span> <span>He was born in Sagordari on the bank of the Kopotaksho river.</span></li>
-                <li><span class="label">(c)</span> <span>Since his adolescence he started believing that he was born on the wrong side of the planet.</span></li>
-                <li><span class="label">(d)</span> <span>The village is in Keshabpur Upazila under Jashore district.</span></li>
-                <li><span class="label">(e)</span> <span>Michael Madhusudan Dutt was a celebrated poet and dramatist in Bengali Literature.</span></li>
-                <li><span class="label">(f)</span> <span>From an early age, Dutt aspired to be an Englishman in form and manner.</span></li>
-                <li><span class="label">(g)</span> <span>In his childhood, he was recognised by his teachers as a precious child with a gift of literary talent.</span></li>
-                <li><span class="label">(h)</span> <span>Though he was born in a sophisticated Hindu Family, he was converted to Christianity.</span></li>
-            </ul>
-        </div>
-
-        <!-- Question 8 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>8. Answer the following questions from poems. (Any 5 out of 8) :</span>
-                <span class="q-marks">2 &times; 5 = 10</span>
-            </div>
-            <ul class="sub-list" style="font-size: 12.5px;">
-                <li><span class="label">(a)</span> <span>Who is the poet of the poem "Books"?</span></li>
-                <li><span class="label">(b)</span> <span>What does the poet compare books to in the poem?</span></li>
-                <li><span class="label">(c)</span> <span>How are the two mothers different yet the same?</span></li>
-                <li><span class="label">(d)</span> <span>What is the central theme of the poem "The Sands of Dee"?</span></li>
-                <li><span class="label">(e)</span> <span>How does the speaker feel about the fleeting nature of Time?</span></li>
-                <li><span class="label">(f)</span> <span>Why does the speaker mention "promises to keep"?</span></li>
-                <li><span class="label">(g)</span> <span>What does the line "Feast, and your halls are crowded" mean in the poem "Solitude"?</span></li>
-                <li><span class="label">(h)</span> <span>What does the poet mean by 'useless years'?</span></li>
-            </ul>
-        </div>
-
-        <!-- Question 9 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>9. Answer the following questions from stories (Any 5 out of 8) :</span>
-                <span class="q-marks">2 &times; 5 = 10</span>
-            </div>
-            <ul class="sub-list" style="font-size: 12.5px;">
-                <li><span class="label">(a)</span> <span>What was written in the bond?</span></li>
-                <li><span class="label">(b)</span> <span>Who was Portia? What do you know about her?</span></li>
-                <li><span class="label">(c)</span> <span>Do you think that Shylock was an inhumane person? Why/Why not?</span></li>
-                <li><span class="label">(d)</span> <span>What did Portia beg to Shylock?</span></li>
-                <li><span class="label">(e)</span> <span>Why didn't Rosamond examine the jar before buying it?</span></li>
-                <li><span class="label">(f)</span> <span>What did Rosamond take the jar for?</span></li>
-                <li><span class="label">(g)</span> <span>What were the two things Rosamond wanted to buy?</span></li>
-                <li><span class="label">(h)</span> <span>What was Rosamond's last request to her mother?</span></li>
-            </ul>
-        </div>
-
-        <!-- Part-B: Writing -->
-        <div class="part-title" style="margin-top: 8px;">Part-B : Writing (Marks : 30)</div>
-
-        <!-- Question 10 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>10. Read the beginning of the following story and complete it in your own way. Give a suitable title to it.</span>
-                <span class="q-marks">15</span>
-            </div>
-            <div class="passage-text" style="font-size: 12.5px;">
-                The King of Iran used to invite the great poet Sheikh Saadi to his court. Once on his way to the king's court &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
-            </div>
-        </div>
-
-        <!-- Question 11 -->
-        <div class="q-block">
-            <div class="q-title">
-                <span>11. Write a dialogue between two friends about the merits and demerits of using mobile phone.</span>
-                <span class="q-marks">15</span>
+            <!-- Short Questions Q9 -->
+            <div class="q-block" style="margin-top: 15px;">
+                <div class="q-title" style="margin-bottom: 4px;">
+                    <span>৯। সংক্ষিপ্ত উত্তর প্রশ্ন (যেকোনো দশটি প্রশ্নের উত্তর দাও) :</span>
+                    <span class="q-marks">মান- ২ × ১০ = ২০</span>
+                </div>
+                <ul class="sub-list">
+                    <li><span class="label">(ক)</span> <span>⁷/₁₂ মূলদ সংখ্যা কি-না ব্যাখ্যা কর।</span></li>
+                    <li><span class="label">(খ)</span> <span>M = {12, 15} এবং N = {15, a} হলে, P(M ∩ N) নির্ণয় কর।</span></li>
+                    <li><span class="label">(গ)</span> <span>S = {(3, 1), (3, 3), (4, 3), (5, 4)} এর ডোমেন ও রেঞ্জ নির্ণয় কর।</span></li>
+                    <li><span class="label">(ঘ)</span> <span>(¹/₂)⁻² এর মান নির্ণয় কর।</span></li>
+                    <li><span class="label">(ঙ)</span> <span>কোনো সংখ্যার তিনগুণের সাথে 5 যোগ করলে যোগফল 26 হলে, সংখ্যাটি নির্ণয় কর।</span></li>
+                    <li><span class="label">(চ)</span> <span>একটি ত্রিভুজের তিনটি বাহুর অনুপাত 5 : 12 : 13 হলে দেখাও যে, ত্রিভুজটি সমকোণী ত্রিভুজ।</span></li>
+                    <li><span class="label">(ছ)</span> <span>একটি বর্গের পরিসীমা 7 সে.মি.। বর্গটি আঁক।</span></li>
+                    <li><span class="label">(জ)</span> <span>tan A = x হলে, sec² A এর মান নির্ণয় কর।</span></li>
+                    <li><span class="label">(ঝ)</span> <span>1 - tan² θ = 4 হলে, θ এর মান নির্ণয় কর।</span></li>
+                    <li><span class="label">(ঞ)</span> <span>দুইটি সংখ্যার অনুপাত 9 : 17 এবং ল.সা.গু. 918 হলে, সংখ্যা দুইটির গ.সা.গু. কত?</span></li>
+                    <li><span class="label">(ট)</span> <span>2x + y = 8 এবং 3x - 2y = 5 সমীকরণদ্বয়ের ছেদ বিন্দুর স্থানাঙ্ক নির্ণয় কর।</span></li>
+                    <li><span class="label">(ঠ)</span> <span>ΔABC ও ΔDEF সদৃশ এবং AB : DE = 2 : 3 হলে, ΔABC : ΔDEF = কত?</span></li>
+                    <li><span class="label">(ড)</span> <span>একটি আয়তাকার ঘরের দৈর্ঘ্য প্রস্থের দ্বিগুণ এবং ক্ষেত্রফল 512 বর্গমিটার হলে, পরিসীমা কত?</span></li>
+                    <li><span class="label">(ঢ)</span> <span>কোনো উপাত্তের সর্বনিম্ন মান 30 এবং পরিসর 42 হলে, উপাত্তের সর্বোচ্চ মান নির্ণয় কর।</span></li>
+                    <li><span class="label">(ণ)</span> <span>5, 7, 3, 2, 7, 9, 10, 12 উপাত্তগুলোর মধ্যক নির্ণয় কর।</span></li>
+                </ul>
             </div>
         </div>
     </div>
